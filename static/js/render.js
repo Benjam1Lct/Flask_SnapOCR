@@ -1,7 +1,8 @@
 const textWrite = document.getElementById('textCopy').textContent;
+const saveTextButton = document.getElementById('saveText');
 const typedText = new Typed('#typed-text', {
   strings: [textWrite],
-  typeSpeed: 70,
+  typeSpeed: 20,
   backSpeed: 70,
   loop: false,
   startDelay: 500,
@@ -39,4 +40,15 @@ window.addEventListener('beforeunload', function() {
   xhr.open('POST', '/supprimer_image_cloudinary', true);
   xhr.setRequestHeader('Content-Type', 'application/json');
   xhr.send(JSON.stringify({ url: image_url }));
+});
+
+
+saveTextButton.addEventListener('click', function() {
+  var textImg = document.getElementById('textCopy').textContent;
+
+  // Envoyer une requête AJAX à votre API Flask pour déclencher la suppression de l'image
+  var xhr = new XMLHttpRequest();
+  xhr.open('POST', '/sauvegarder', true);
+  xhr.setRequestHeader('Content-Type', 'application/json');
+  xhr.send(JSON.stringify({ text: textImg }));
 });

@@ -70,7 +70,7 @@ section .prediction {
 section .predi_flex {
     display: flex;
     border-top: 2px solid var(--text-color);
-    width: 650px;
+    width: 550px;
     height: auto;
     margin-top: 40px;
 }
@@ -82,7 +82,7 @@ section .predi_flex #buttonCopy {
     cursor: pointer;
     font-size: 16px;
     height: 30px;
-    width: 30px;
+    width: 35px;
     margin-top: 5px;
     margin-left: 5px;
 }
@@ -95,7 +95,7 @@ section .predi_flex #buttonDownload {
     cursor: pointer;
     font-size: 19px;
     height: 30px;
-    width: 30px;
+    width: 35px;
     margin-top: 5px;
 }
 
@@ -125,6 +125,7 @@ section .arrow {
     text-align: right;
     transform: translate(6px, 0px);
     padding: 0;
+    margin-top: 0.5px;
 }
 
 section p i {

@@ -1,14 +1,11 @@
 import pipeline
-from flask import Flask, render_template, request, url_for
+from flask import Flask, render_template, request, url_for, redirect
 from flask_uploads import UploadSet, configure_uploads, IMAGES
 import cloudinary
 from cloudinary.uploader import upload, destroy
-
-cloudinary.config(
-  cloud_name = "dcjkfjdiv",
-  api_key = "668559953486661",
-  api_secret = "vVQ6CyNlSr8qCt54zMbstlLKZdY"
-)
+from datetime import datetime
+from PIL import Image
+from io import BytesIO
 
 application = Flask(__name__, template_folder='templates', static_folder='static')
 
@@ -25,6 +22,11 @@ def get_image_id_from_url(image_url):
 
 @application.route('/supprimer_image_cloudinary', methods=['POST'])
 def supprimer_image_cloudinary():
+    cloudinary.config(
+    cloud_name = "dcjkfjdiv",
+    api_key = "668559953486661",
+    api_secret = "vVQ6CyNlSr8qCt54zMbstlLKZdY"
+    )
     image_url = request.json['url']
     public_id = get_image_id_from_url(image_url)
 
@@ -36,10 +38,17 @@ def supprimer_image_cloudinary():
     else:
         print("Une erreur s'est produite lors de la suppression de l'image.")
 
-@application.route('/', methods=['GET', 'POST'])
+@application.route('/', methods=['GET' , 'POST'])
 def index():
     if request.method == 'POST' and 'photo' in request.files:
+        cloudinary.config(
+        cloud_name = "dcjkfjdiv",
+        api_key = "668559953486661",
+        api_secret = "vVQ6CyNlSr8qCt54zMbstlLKZdY"
+        )
+
         file = request.files['photo']
+        
         upload_result = upload(file)
         image_url = upload_result['secure_url']
         print(image_url)
@@ -49,7 +58,7 @@ def index():
         for text, box in predictions[0]:
             ocr_text += text + " "
         print(ocr_text)
-
+        print('Image processed successfully')
         return render_template('render.html', ocr_text=ocr_text, url=image_url)
     return render_template('index.html')
 
@@ -65,7 +74,7 @@ def renderTest():
 
 @application.route('/connexion')
 def connexion():
-    return render_template('connexion.html', form=form)
+    return render_template('connexion.html')
 
 @application.route('/inscription')
 def inscription():

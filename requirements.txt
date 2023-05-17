@@ -1,13 +1,12 @@
 numpy
 opencv-python
 tensorflow
-git+https://github.com/qubvel/segmentation_models
-
-
-SirvPy
+-U git+https://github.com/qubvel/segmentation_models
+imgaug
+validators
 Flask
+Flask-Uploads
 cloudinary
-fpdf
-python-docx
-Flask-SQLAlchemy
+-U Flask-SQLAlchemy
 flask-login
+Pillow
