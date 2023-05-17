@@ -48,7 +48,8 @@ section .image {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 550px;
+    max-width: 550px;
+    width: auto;
     height: 300px;
     border: 2px dashed var(--bg-color-dm);
     padding: 10px;
@@ -56,7 +57,7 @@ section .image {
 }
 
 section img {
-    width: 100%;
+    width: auto;
     height: 100%;
     border-radius: 10px;
 }
@@ -131,46 +132,44 @@ section p i {
     font-size: 20px;
 }
 
-section .button {
+section #button {
     margin-top: 60px;
     margin-bottom: 30%;
 }
 
-section #save {
+section #saveText {
     background-color: var(--text-color);
     color: var(--bg-color);
     font-size: 18px;
     padding: 7px 25px;
-    border: 1px solid var(--text-color);
-    border-radius: 100px;
-    transition: all .3s ease;
-}
-
-section #save i {
-    display: none;
-}
-section #save span {
-    display: contents;
-}
-
-section #save.active {
-    display: inline-grid;
-    background-color: var(--text-color);
-    color: var(--bg-color);
-    font-size: 20px;
-    padding: 7px 25px;
     border: 3px solid var(--text-color);
     border-radius: 100px;
     transition: all .3s ease;
-    width: 96.54px;
-    height: 43.2px;
+    display: inline;
 }
 
-section #save.active span {
+#button.active #saveText {
     display: none;
 }
-section #save.active i {
-    display: contents;
+
+section #saveCheck {
+    display: none;
+}
+
+#button.active #saveCheck {
+    background-color: var(--save);
+    color: var(--bg-color);
+    font-size: 18px;
+    padding: 7px 40px;
+    border: 3px solid var(--save);
+    border-radius: 100px;
+    transition: all .3s ease;
+    display: inline;
+    cursor: default;
+}
+
+#button.active #saveCheck i {
+    scale: 1.5;
 }
 
 section #retry {
@@ -184,9 +183,8 @@ section #retry {
     margin-left: 25px;
 }
 
-section #retry:hover,
-section #save:hover {
+#button #saveText:hover,
+#button #retry:hover {
     background-color: transparent;
     color: var(--text-color);
-
 }

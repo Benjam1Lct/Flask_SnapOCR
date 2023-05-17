@@ -5,3 +5,6 @@ numpy
 cloudinary
 fpdf
 python-docx
+Flask-SQLAlchemy
+flask-login
+pyrebase

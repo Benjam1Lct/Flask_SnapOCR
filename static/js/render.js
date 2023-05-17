@@ -30,3 +30,13 @@ function convertTextToPDF() {
 
 var convertButton = document.getElementById('buttonDownload');
 convertButton.addEventListener('click', convertTextToPDF);
+
+window.addEventListener('beforeunload', function() {
+  var image_url = document.getElementById('urlImage').textContent;
+
+  // Envoyer une requête AJAX à votre API Flask pour déclencher la suppression de l'image
+  var xhr = new XMLHttpRequest();
+  xhr.open('POST', '/supprimer_image_cloudinary', true);
+  xhr.setRequestHeader('Content-Type', 'application/json');
+  xhr.send(JSON.stringify({ url: image_url }));
+});

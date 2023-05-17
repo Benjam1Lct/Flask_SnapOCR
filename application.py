@@ -1,8 +1,8 @@
-import pipeline, tools
-from flask import Flask, render_template, request, redirect, url_for
+import pipeline
+from flask import Flask, render_template, request, url_for
 from flask_uploads import UploadSet, configure_uploads, IMAGES
 import cloudinary
-from cloudinary.uploader import upload
+from cloudinary.uploader import upload, destroy
 
 cloudinary.config(
   cloud_name = "dcjkfjdiv",
@@ -10,14 +10,32 @@ cloudinary.config(
   api_secret = "vVQ6CyNlSr8qCt54zMbstlLKZdY"
 )
 
-keras_pipeline = pipeline.Pipeline()
-
 application = Flask(__name__, template_folder='templates', static_folder='static')
 
 application.config['UPLOADED_PHOTOS_DEST'] = 'uploads'
 photos = UploadSet('photos', IMAGES)
 configure_uploads(application, photos)
 
+keras_pipeline = pipeline.Pipeline()
+
+
+def get_image_id_from_url(image_url):
+    # Extraire le public_id de l'URL de l'image
+    public_id = image_url.split('/')[-1].split('.')[0]
+    return public_id
+
+@application.route('/supprimer_image_cloudinary', methods=['POST'])
+def supprimer_image_cloudinary():
+    image_url = request.json['url']
+    public_id = get_image_id_from_url(image_url)
+
+    # Supprimer la ressource (image)    
+    response = destroy(public_id, resource_type = "image")
+
+    if response['result'] == 'ok':
+        print("L'image a été supprimée avec succès.")
+    else:
+        print("Une erreur s'est produite lors de la suppression de l'image.")
 
 @application.route('/', methods=['GET', 'POST'])
 def index():
@@ -36,16 +54,19 @@ def index():
         return render_template('render.html', ocr_text=ocr_text, url=image_url)
     return render_template('index.html')
 
+@application.route('/profil')
+def profil():
+    return render_template('profil.html')
+
 @application.route('/renderTest')
-def render():
-    ocr_text = 'lorem ipsum dolor sit amet, consectetur adipiscing,lorem ipsum dolor sit amet, consecteturem ipsum dolor sit amet, consectetur adipiscing,lorem ipsum dolor sit amet, consecteturem ipsum dolor sit amet, consectetur adipiscing,lorem ipsum dolor sit amet, consecteturem ipsum dolor sit amet, consectetur adipiscing,lorem ipsum dolor sit amet, consecteturem ipsum dolor sit amet, consectetur adipiscing,lorem ipsum dolor sit amet, consecteturem ipsum dolor sit amet, consectetur adipiscing,lorem ipsum dolor sit amet, consectetur adipiscinglorem ipsum dolor sit amet, consectetur adiis '
+def renderTest():
+    ocr_text = 'text'
     full_path = 'telechargement.png'
     return render_template('render.html', ocr_text=ocr_text, name=full_path)
 
 @application.route('/connexion')
 def connexion():
-    
-    return render_template('connexion.html')
+    return render_template('connexion.html', form=form)
 
 @application.route('/inscription')
 def inscription():
