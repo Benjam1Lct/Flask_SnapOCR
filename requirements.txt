@@ -1,10 +1,13 @@
+numpy
+opencv-python
+tensorflow
+git+https://github.com/qubvel/segmentation_models
+
+
 SirvPy
 Flask
-tensorflow
-numpy
 cloudinary
 fpdf
 python-docx
 Flask-SQLAlchemy
 flask-login
-pyrebase
