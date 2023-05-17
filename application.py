@@ -1,9 +1,14 @@
 import pipeline, tools
-import os
-import shutil
 from flask import Flask, render_template, request, redirect, url_for
 from flask_uploads import UploadSet, configure_uploads, IMAGES
-import requests
+import cloudinary
+from cloudinary.uploader import upload
+
+cloudinary.config(
+  cloud_name = "dcjkfjdiv",
+  api_key = "668559953486661",
+  api_secret = "vVQ6CyNlSr8qCt54zMbstlLKZdY"
+)
 
 keras_pipeline = pipeline.Pipeline()
 
@@ -13,37 +18,23 @@ application.config['UPLOADED_PHOTOS_DEST'] = 'uploads'
 photos = UploadSet('photos', IMAGES)
 configure_uploads(application, photos)
 
-def upload_image_to_imgbb(image):
-    url = 'https://api.imgbb.com/1/upload'
-    payload = {
-        'key': '63e476a7546c8f74439cde65f988f379',
-        'image': image.read()
-    }
-    response = requests.post(url, payload)
-    data = response.json()
-    if data['status'] == 200:
-        return data['data']['url']
-    else:
-        return None
 
 @application.route('/', methods=['GET', 'POST'])
 def index():
     if request.method == 'POST' and 'photo' in request.files:
         file = request.files['photo']
-        if file:
-            # Utilisez l'API d'ImgBB pour uploader l'image
-            url = upload_image_to_imgbb(file)
-
-        predictions = keras_pipeline.recognize([url])
+        upload_result = upload(file)
+        image_url = upload_result['secure_url']
+        print(image_url)
+        
+        predictions = keras_pipeline.recognize([image_url])
         ocr_text = ""
         for text, box in predictions[0]:
             ocr_text += text + " "
         print(ocr_text)
 
-        return render_template('render.html', ocr_text=ocr_text, name=url)
+        return render_template('render.html', ocr_text=ocr_text, url=image_url)
     return render_template('index.html')
-
-
 
 @application.route('/renderTest')
 def render():

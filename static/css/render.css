@@ -9,29 +9,24 @@
 
 /* Rendre la barre de défilement invisible */
 ::-webkit-scrollbar {
-    width: 0.5em;
-    background-color: #fff;
+    width: 0em;
+    height: 0em;
+    background-color: rgba(255, 255, 255, 0.842);
     border-radius: 10px;
 }
 
 /* Ajouter un bord à la barre de défilement */
 ::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0);
-    border-radius: 10px;
+    border: none;
 }
 
 /* Ajouter une couleur de fond à la poignée de la barre de défilement */
 ::-webkit-scrollbar-thumb {
-    background-color: #dddddd;
+    background-color: rgba(255, 255, 255, 0.842);
     border-radius: 10px;
 }
 
-body::-webkit-scrollbar {
-    position: absolute;
-    right: 0;
-    top: 0;
-    height: 100vh;
-  }
+
 
 html,body{
     overflow: hidden;
@@ -78,8 +73,7 @@ section .predi_flex {
     height: auto;
     margin-top: 40px;
 }
-
-section .predi_flex button {
+section .predi_flex #buttonCopy {
     border: 1px solid var(--bg-color-dm);
     border-radius: 5px;
     color: var(--text-color);
@@ -89,9 +83,27 @@ section .predi_flex button {
     height: 30px;
     width: 30px;
     margin-top: 5px;
+    margin-left: 5px;
 }
 
-section .predi_flex button:active {
+section .predi_flex #buttonDownload {
+    border: 1px solid var(--bg-color-dm);
+    border-radius: 5px;
+    color: var(--text-color);
+    background-color: transparent;
+    cursor: pointer;
+    font-size: 19px;
+    height: 30px;
+    width: 30px;
+    margin-top: 5px;
+}
+
+section .predi_flex #buttonDownload i {
+    padding-top: 5px;
+}
+
+section .predi_flex #buttonCopy:active,
+section .predi_flex #buttonDownload:active {
     background-color: var(--bg-color-dm);
 }
 
@@ -124,17 +136,57 @@ section .button {
     margin-bottom: 30%;
 }
 
-section a {
-    background-color: var(--secondary-color);
-    color: var(--text-color);
-    font-size: 20px;
-    padding: 10px 30px;
-    border: 3px solid var(--secondary-color);
+section #save {
+    background-color: var(--text-color);
+    color: var(--bg-color);
+    font-size: 18px;
+    padding: 7px 25px;
+    border: 1px solid var(--text-color);
     border-radius: 100px;
     transition: all .3s ease;
 }
 
-section a:hover {
+section #save i {
+    display: none;
+}
+section #save span {
+    display: contents;
+}
+
+section #save.active {
+    display: inline-grid;
+    background-color: var(--text-color);
+    color: var(--bg-color);
+    font-size: 20px;
+    padding: 7px 25px;
+    border: 3px solid var(--text-color);
+    border-radius: 100px;
+    transition: all .3s ease;
+    width: 96.54px;
+    height: 43.2px;
+}
+
+section #save.active span {
+    display: none;
+}
+section #save.active i {
+    display: contents;
+}
+
+section #retry {
+    background-color: var(--warm-color);
+    color: var(--bg-color);
+    font-size: 18px;
+    padding: 7px 25px;
+    border: 3px solid var(--warm-color);
+    border-radius: 100px;
+    transition: all .3s ease;
+    margin-left: 25px;
+}
+
+section #retry:hover,
+section #save:hover {
     background-color: transparent;
+    color: var(--text-color);
 
 }

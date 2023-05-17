@@ -13,7 +13,7 @@
     --text-color: #323d4b;
     --main-color: #4042e2;
     --secondary-color: #f5b24e;
-    --warm-color: #db5c4b;
+    --warm-color: #e75d4b;
     --warm-bright-color: #ff8682;
     --cold-color: #fcea4e;
     --melon: #F6ACABff;
@@ -26,6 +26,7 @@
     --silver: #B6A8A2ff;
     --light-blue: #B1D7D8ff;
     --peach: #FBC39Bff;
+    --save: #4abb83;
 }
 
 html{

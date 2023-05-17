@@ -1,4 +1,4 @@
-const textWrite = document.getElementById('text-copy').textContent;
+const textWrite = document.getElementById('textCopy').textContent;
 const typedText = new Typed('#typed-text', {
   strings: [textWrite],
   typeSpeed: 70,
@@ -8,10 +8,25 @@ const typedText = new Typed('#typed-text', {
   backDelay: 3000,
   showCursor: false
 });
-const boutonCopie = document.getElementById('button-copy');
-const texteACopier = document.getElementById('text-copy').textContent;
 
-boutonCopie.addEventListener('click', function() {
-  navigator.clipboard.writeText(texteACopier);
-  console.log('Le texte a été copié dans le presse-papiers !');
-});
+document.getElementById("buttonCopy").addEventListener("click", copy_password);
+
+function copy_password() {
+    var copyText = document.getElementById("textCopy");
+    var textArea = document.createElement("textarea");
+    textArea.value = copyText.textContent;
+    document.body.appendChild(textArea);
+    textArea.select();
+    document.execCommand("Copy");
+    textArea.remove();
+}
+
+function convertTextToPDF() {
+  var doc = new jspdf.jsPDF();
+  var text = document.getElementById('textCopy').value;
+  doc.text(text, 10, 10);
+  doc.save('SnapOCR.pdf');
+}
+
+var convertButton = document.getElementById('buttonDownload');
+convertButton.addEventListener('click', convertTextToPDF);

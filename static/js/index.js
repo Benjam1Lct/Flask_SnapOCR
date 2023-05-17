@@ -30,7 +30,7 @@ defaultBtn.addEventListener("change", function(){
             wrapper.classList.add('active');
         }
         cancelBtn.addEventListener("click", function(){
-            img.src = "./static/img/transparent.png";
+            img.src = "https://sisthege.sirv.com/transparent.png";
             fileInput.value = null;
             wrapper.classList.remove('active');
         })
@@ -52,5 +52,5 @@ function showLoader() {
     // Masquer la page
     document.getElementById('page').style.display = 'none';
     // Afficher le loader
-    img.src = "./static/img/4loader.gif";
+    img.src = "https://sisthege.sirv.com/4loader.gif";
 }

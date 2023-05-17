@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="Website Icon" type="png" href="{{ url_for('static', filename='img/icon3.png') }}">
+    <link rel="Website Icon" type="png" href="https://sisthege.sirv.com/icon4.png">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/header.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/render.css') }}">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">
@@ -41,13 +41,16 @@
             <div class="predi_flex">
                 <p class="arrow"><i class='bx bxs-chevron-right bx-flashing' style='color:#474747'  ></i></p>
                 <div class="text">
-                    <span style="display: none" id="text-copy">{{ocr_text}}</span>
+                    <textarea style="display:none" id="textCopy">{{ocr_text}}</textarea>
                     <p id="typed-text"></p>
                 </div>
-                <button id="button-copy"><i class="ri-clipboard-fill"></i></button>
+                <button id="buttonDownload"><i class='bx bxs-download' ></i></button>
+                <button id="buttonCopy"><i class="ri-clipboard-fill"></i></button>
             </div>
             <div class="button">
-                <a href="{{url_for('index')}}">RETRY</a>    
+                <a id="save" href="{{url_for('index')}}"><span>Save</span><i class='bx bx-check'></i></a>  
+                <a id="retry" href="{{url_for('index')}}">Again</a>
+                  
             </div>
             
         </div>
@@ -56,6 +59,7 @@
     </section>
     
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js"></script>
+    <script src="https://unpkg.com/jspdf@latest/dist/jspdf.umd.min.js"></script>
     <script src="{{ url_for('static', filename='js/header.js') }}"></script>
     <script src="{{ url_for('static', filename='js/render.js') }}"></script>
 </body>
