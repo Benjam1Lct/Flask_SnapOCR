@@ -18,7 +18,6 @@ configure_uploads(application, photos)
 
 keras_pipeline = pipeline.Pipeline()
 
-
 def get_image_id_from_url(image_url):
     # Extraire le public_id de l'URL de l'image
     public_id = image_url.split('/')[-1].split('.')[0]
