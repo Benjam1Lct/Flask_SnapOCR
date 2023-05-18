@@ -8,7 +8,7 @@ from tensorflow import keras
 import numpy as np
 import cv2
 
-import tools
+from . import tools
 
 DEFAULT_BUILD_PARAMS = {
     "height": 31,

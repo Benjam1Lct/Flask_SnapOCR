@@ -17,7 +17,7 @@ import PIL.ImageDraw
 import PIL.ImageFont
 import fontTools.ttLib
 
-import tools
+from . import tools
 
 LIGATURES = {"\U0000FB01": "fi", "\U0000FB02": "fl"}
 LIGATURE_STRING = "".join(LIGATURES.keys())

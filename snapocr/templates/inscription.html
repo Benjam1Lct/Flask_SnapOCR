@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="Website Icon" type="image/png" href="https://sisthege.sirv.com/icon4.png">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/header.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/login.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap" rel="stylesheet">
+    <title>SnapOCR</title>
+</head>
+<body>
+
+    <header>
+        <a href="{{url_for('index')}}" class="logo"><i class='bx bxs-image-add' ></i><span>SnapOCR</span></a>
+
+        <ul class="navbar">
+            <li><a href="{{url_for('index')}}">Home</a></li>
+            <li><a href="{{url_for('about_us')}}" >About Us</a></li>
+            <li><a href="{{url_for('services')}}" >Services</a></li>
+            <li><a href="{{url_for('blog')}}" >Blog</a></li>
+            <li class="link-header-signin"><a href="{{url_for('connexion')}}" >Sign in</a></li>
+        </ul>
+
+        <div class="main">
+            <a href="{{url_for('connexion')}}" class="user"><i class='bx bxs-contact' ></i>Sign In</a>
+            <div class="bx bx-menu" id="menu-icon"></div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="content">
+            <h2 class="icon"><i class='bx bxl-python' undefined ></i>OCR Application</h2>
+            <div class="text-sci">
+                <h2>Welcome!
+                    <br>
+                    <span>To Our New Website.</span>
+                </h2>    
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fuga, quae.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="ri-facebook-fill"></i></a>
+                    <a href="#"><i class="ri-instagram-line"></i></a>
+                    <a href="#"><i class="ri-twitter-fill"></i></a>
+                    <a href="#"><i class="ri-linkedin-fill"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="logreg-box">
+
+            <form method="POST" action="">
+                {{form.hidden_tag()}}
+                <fieldset>
+                <legend>Sign Up</legend>
+                    <div class="form-group">
+                        {{form.username.label(class="form-control-label")}}
+                        {%if form.username.errors%}
+                        {{form.username(class="form-control is-invalid")}}
+                            {%for error in form.username.errors%}
+                                <span>{{error}}</span>
+                            {%endfor%}
+                            {% else %}
+                            {{form.username(class="form-control")}}
+                        {%endif%}
+                        
+                    </div>
+                    <div class="form-group">
+                        {{form.email.label(class="form-control-label")}}
+                        {%if form.email.errors%}
+                        {{form.email(class="form-control is-invalid")}}
+                            {%for error in form.email.errors%}
+                                <span>{{error}}</span>
+                            {%endfor%}
+                            {% else %}
+                            {{form.email(class="form-control")}}
+                        {%endif%}
+                        
+                    </div>
+                    <div class="form-group">
+                        {{form.password.label(class="form-control-label")}}
+                        {%if form.password.errors%}
+                        {{form.password(class="form-control is-invalid")}}
+                            {%for error in form.password.errors%}
+                                <span>{{error}}</span>
+                            {%endfor%}
+                            {% else %}
+                            {{form.password(class="form-control")}}
+                        {%endif%}
+                        
+                    </div>
+                    <div class="form-group">
+                        {{form.confirm_password.label(class="form-control-label")}}
+                        {%if form.confirm_password.errors%}
+                        {{form.confirm_password(class="form-control is-invalid")}}
+                            {%for error in form.confirm_password.errors%}
+                                <span>{{error}}</span>
+                            {%endfor%}
+                            {% else %}
+                            {{form.confirm_password(class="form-control")}}
+                        {%endif%}
+                        
+                    </div>
+                </fieldset>
+                <div class="form-group">
+                    {{form.submit(class="btn btn-online-info")}}
+                </div>
+            </form>
+            <a href="{{url_for('connexion')}}">Connexion</a>
+        </div>
+    </div>
+    <div class="message">
+        {%with messages=get_flashed_messages(with_categories=true)%}
+            {%if messages%}
+                {%for category, message in messages%}
+                <div class="alert alert-{{category}}">
+                    {{message}}
+                </div>
+                {%endfor%}
+            {%endif%}
+        {%endwith%}
+    </div>
+    
+    <script src="{{ url_for('static', filename='js/header.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/login.js') }}"></script>
+</body>
+</html>

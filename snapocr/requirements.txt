@@ -10,3 +10,10 @@ cloudinary
 -U Flask-SQLAlchemy
 flask-login
 Pillow
+flask-wtf
+email_validator
+flask-sqlalchemy
+tqdm
+essential-generators
+editdistance
+pyclipper

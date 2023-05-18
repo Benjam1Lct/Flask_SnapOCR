@@ -14,7 +14,7 @@ import imgaug
 import PIL.Image
 import numpy as np
 
-import tools
+from . import tools
 
 
 def _read_born_digital_labels_file(labels_filepath, image_folder):

@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/../css2?family=Poppins:wght@500;600&display=swap" rel="stylesheet">
     <title>SnapOCR</title>
 </head>
 <body>
@@ -20,7 +20,7 @@
         <a href="{{url_for('index')}}" class="logo"><i class='bx bxs-image-add' ></i><span>SnapOCR</span></a>
 
         <ul class="navbar">
-            <li><a href="{{url_for('index')}}">Home</a></li>
+            <li><a href="{{url_for('index')}}" >Home</a></li>
             <li><a href="{{url_for('about_us')}}" >About Us</a></li>
             <li><a href="{{url_for('services')}}" >Services</a></li>
             <li><a href="{{url_for('blog')}}" >Blog</a></li>
@@ -51,42 +51,54 @@
             </div>
         </div>
         <div class="logreg-box">
-
-            <div class="form-box register">
-                <form id="form-up" action="inscription_traitement.html" method="post">
-                    <h2>Register</h2>
-
-                    <div class="input-box">
-                        <span class="icon-input"><i class="ri-user-3-fill"></i></span>
-                        <input type="text" name="username" id="username" required autocomplete="off">
-                        <label for="username">Username</label>
-                    </div>
-
-                    <div class="input-box">
-                        <span class="icon-input"><i class='bx bxs-envelope' ></i></span>
-                        <input type="text" name="email" id="email" required autocomplete="off">
-                        <label for="email">Email</label>
-                    </div>                    
-
-                    <div class="input-box">
-                        <span class="icon-input"><i class='bx bxs-lock-alt' ></i></span>
-                        <input type="password" name="password" id="pass-up" required autocomplete="off">
-                        <label>Password</label>
-                    </div>
-
-                    <div class="remember-forgot">
-                        <label><input type="checkbox">I agree to the terms & conditions</label>
-                    </div>
-                    <button type="submit" class="btn" id="btn-up">Sign Up</button>
             
-                    <div class="login-register">
-                        <p>Already have an account?
-                            <a href="{{url_for('connexion')}}" class="login-link">Sign in</a>
-                        </p>
+            <form method="POST" action="">
+                {{form.hidden_tag()}}
+                <fieldset>
+                <legend>Login</legend>
+                    <div class="form-group">
+                        {{form.email.label(class="form-control-label")}}
+                        {%if form.email.errors%}
+                        {{form.email(class="form-control is-invalid")}}
+                            {%for error in form.email.errors%}
+                                <span>{{error}}</span>
+                            {%endfor%}
+                            {% else %}
+                            {{form.email(class="form-control")}}
+                        {%endif%}
+                        
                     </div>
-                </form>
-            </div>
+                    <div class="form-group">
+                        {{form.password.label(class="form-control-label")}}
+                        {%if form.password.errors%}
+                        {{form.password(class="form-control is-invalid")}}
+                            {%for error in form.password.errors%}
+                                <span>{{error}}</span>
+                            {%endfor%}
+                            {% else %}
+                            {{form.password(class="form-control")}}
+                        {%endif%}
+                        
+                    </div>
+                </fieldset>
+                <div class="form-group">
+                    {{form.submit(class="btn btn-online-info")}}
+                </div>
+            </form>
+            <a href="{{url_for('inscription')}}">Inscription</a>
         </div>
+    </div>
+
+    <div class="message">
+        {%with messages=get_flashed_messages(with_categories=true)%}
+            {%if messages%}
+                {%for category, message in messages%}
+                <div class="alert alert-{{category}}">
+                    {{message}}
+                </div>
+                {%endfor%}
+            {%endif%}
+        {%endwith%}
     </div>
     
     
