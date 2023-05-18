@@ -17,7 +17,7 @@ app = Flask(__name__, template_folder='templates', static_folder='static')
 app.config['SECRET_KEY'] = 'thisisasecretkeyformyappflask'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database/flaskocr.db'
 
-db = SQLAlchemy(app)
+db.init_app(app)
 
 app.config['UPLOADED_PHOTOS_DEST'] = 'uploads'
 photos = UploadSet('photos', IMAGES)
@@ -27,6 +27,8 @@ from snapocr import pipeline
 keras_pipeline = pipeline.Pipeline()
 
 from snapocr import routes
+
+
 
 
 
