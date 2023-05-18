@@ -3,6 +3,8 @@ from flask import Flask, render_template, request, redirect, url_for, flash
 import cloudinary
 from cloudinary.uploader import upload, destroy
 from snapocr.forms import RegistrationForm, LoginForm
+from snapocr.models import User
+from snapocr import db
 
 def get_image_id_from_url(image_url):
     # Extraire le public_id de l'URL de l'image
@@ -65,6 +67,9 @@ def renderTest():
 def inscription():
     form=RegistrationForm()
     if form.validate_on_submit():
+        user=User(username=form.username.data,email=form.email.data,password=form.password.data)
+        db.session.add(user)
+        db.session.commit()
         flash(f'Account created successfully for {form.username.data}', category='success')
         return redirect(url_for('connexion'))
     return render_template('inscription.html', form=form)
