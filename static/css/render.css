@@ -39,7 +39,7 @@ section {
     width: 100%;
     height: 100%;
     padding-top: 140px;
-    overflow: scroll;
+    overflow: hidden;
     text-align: center;
     align-items: center;
 }
@@ -71,20 +71,22 @@ section .predi_flex {
     display: flex;
     border-top: 2px solid var(--text-color);
     width: 550px;
-    height: auto;
+    height: 33vh;
     margin-top: 40px;
+    overflow: auto;
 }
 section .predi_flex #buttonCopy {
     border: 1px solid var(--bg-color-dm);
     border-radius: 5px;
     color: var(--text-color);
     background-color: transparent;
+    position: fixed;
     cursor: pointer;
     font-size: 16px;
     height: 30px;
-    width: 35px;
+    width: 30px;
     margin-top: 5px;
-    margin-left: 5px;
+    margin-left: 520px;
 }
 
 section .predi_flex #buttonDownload {
@@ -92,11 +94,13 @@ section .predi_flex #buttonDownload {
     border-radius: 5px;
     color: var(--text-color);
     background-color: transparent;
+    position: fixed;
     cursor: pointer;
     font-size: 19px;
     height: 30px;
-    width: 35px;
+    width: 30px;
     margin-top: 5px;
+    margin-left: 485px;
 }
 
 section .predi_flex #buttonDownload i {
@@ -115,9 +119,9 @@ section .text {
 section p {
     font-size: 18px;
     text-align: left;
-    padding-left: 15px;
-    padding-top: 5px;
-    padding-right: 10px;
+    padding-left: 32px;
+    padding-top: 6px;
+    padding-right: 75px;
 }
 
 section .arrow {
@@ -126,6 +130,7 @@ section .arrow {
     transform: translate(6px, 0px);
     padding: 0;
     margin-top: 0.5px;
+    position: fixed;
 }
 
 section p i {

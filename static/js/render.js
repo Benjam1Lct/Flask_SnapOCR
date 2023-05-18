@@ -2,8 +2,8 @@ const textWrite = document.getElementById('textCopy').textContent;
 const saveTextButton = document.getElementById('saveText');
 const typedText = new Typed('#typed-text', {
   strings: [textWrite],
-  typeSpeed: 20,
-  backSpeed: 70,
+  typeSpeed: 10,
+  backSpeed: 10,
   loop: false,
   startDelay: 500,
   backDelay: 3000,
