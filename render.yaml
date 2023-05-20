@@ -1,8 +1,6 @@
 services:
   - name: snapocr
     env:
-      - key: RENDER_CMD
-        value: flask run --host=0.0.0.0 --port=$PORT
       - key: FLASK_APP
         value: project
     buildCommand: pip install -r project/requirements.txt
