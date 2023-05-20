@@ -2,7 +2,7 @@
 # exit on error
 set -o errexit
 
-source ./auth/Scripts/activate
+. "$PWD/auth/bin/activate"
 
 export FLASK_APP=project
 export FLASK_DEBUG=1
