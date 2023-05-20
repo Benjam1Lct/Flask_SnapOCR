@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/header.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/mobile.css') }}">
+{% endblock %}
+
+{% block content %}
+<img class="illustration" src="https://sisthege.sirv.com/illu6.png">
+
+<a class="download-link-android" href="#">
+    <img src="https://sisthege.sirv.com/Android-Badge_Black.png" alt="">
+</a>
+{% endblock %}
+
+{% block js %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/header.css') }}">
+{% endblock %}
