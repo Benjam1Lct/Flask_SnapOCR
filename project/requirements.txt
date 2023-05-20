@@ -1,3 +1,4 @@
+tensorflow
 numpy
 opencv-python
 segmentation-models
@@ -17,4 +18,4 @@ essential-generators
 editdistance
 pyclipper
 flask_migrate
-keras-ocr
+gunicorn

@@ -8,8 +8,8 @@ from .models import User, Predict
 
 main = Blueprint('main', __name__)
 
-import keras_ocr
-keras_pipeline = keras_ocr.pipeline.Pipeline()
+from . import pipeline
+keras_pipeline = pipeline.Pipeline()
 
 
 def get_image_id_from_url(image_url):

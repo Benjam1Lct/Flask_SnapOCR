@@ -2,6 +2,7 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_uploads import UploadSet, configure_uploads, IMAGES
 from flask_login import LoginManager
+from . import config, data_generation, datasets, detection, evaluation, pipeline, recognition, tools
 
 db = SQLAlchemy()
 
