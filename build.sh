@@ -11,7 +11,7 @@ pip install -r project/requirements.txt
 file_path=$(find "$PWD/auth/Lib/site-packages" -name "flask_uploads.py")
 
 # Vérifier si le fichier a été trouvé
-if [[ -n $file_path ]]; then
+if [ -n "$file_path" ]; then
   # Effectuer le remplacement des lignes spécifiques
   sed -i 's/from werkzeug import secure_filename, FileStorage/from werkzeug.utils import secure_filename\nfrom werkzeug.datastructures import FileStorage/' "$file_path"
 else
