@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/header.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/profil.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="divProfile">
+  <h1>Predictons Saves</h1>
+  <button class="editPredi"><i class='bx bxs-edit'></i></button>
+  <div class="tuileBox">
+    {% for prediction in current_user.predictions %}
+    <div class="prediction-tuile prediction-tuile{{prediction.id}}" id="prediction-tuile prediction-tuile-{{prediction.id}}">
+      <p style="display: none;">{{prediction.id}}</p>
+      <button class="deleteTuile deleteTuile{{prediction.id}}" id="deleteTuile{{prediction.id}}"><i class='bx bxs-minus-circle' ></i></button>
+        <h3>{{ prediction.title }}</h3>
+        <p class="date">{{ prediction.date.strftime('%Y-%m-%d') }}</p>
+        <p class="text">{{ prediction.text }}</p>
+        <div class="gradientTuile"></div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}
+
+{% block message %}
+{% endblock %}
+
+{% block js %}
+<script src="{{ url_for('static', filename='js/header.js') }}"></script>
+<script src="{{ url_for('static', filename='js/profile.js') }}"></script>
+{% endblock %}
