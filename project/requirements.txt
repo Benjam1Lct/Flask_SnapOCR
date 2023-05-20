@@ -18,3 +18,4 @@ essential-generators
 editdistance
 pyclipper
 flask_migrate
+keras-ocr
