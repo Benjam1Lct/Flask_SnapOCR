@@ -7,7 +7,7 @@
     list-style: none;
 }
 
-.container {
+.containerAll {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -17,12 +17,13 @@
     background-size: cover;
     background-position: center;
     border-radius: 10px;
+    background: rgba(194, 194, 194, 0.425);
+    border: 1px solid rgba(255, 255, 255, 0.329);
+    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
+    display: flex;
 }
 
-.container .content {
-    position: absolute;
-    top: 0;
-    left: 0;
+.containerAll .content {
     width: 58%;
     height: 100%;
     background: transparent;
@@ -35,7 +36,7 @@
 
 
 .content .icon {
-    font-size: 30px;
+    font-size: 35px;
 }
 
 .text-sci h2 {
@@ -60,28 +61,117 @@
     transition: all .30s ease;
 }
 
-.container .logreg-box {
-    position: absolute;
-    top: 0;
-    right: 0;
+.box {
+    position: relative;
     width: calc(100% - 58%);
     height: 100%;
-    overflow: hidden;
+    
 }
 
-.form-group {
+.container {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    border-radius: 10px;
     display: flex;
-    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.589);
+    background: rgba(226, 226, 226, 0.219);
 }
 
-fieldset {
-    display: flex;
-    flex-direction: column;
+.form {
+    position: relative;
+    width: 100%;
+    height: auto;
+    padding: 40px;
 }
 
+.form h2 {
+    position: relative;
+    color: #fff;
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: 40px;
+}
+
+.form h2::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    width: 80px;
+    height: 4px;
+    background: #fff;
+}
+
+.form .inputBox {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.form .inputCheckbox {
+    margin-top: 20px;
+}
+
+.form .inputBox input {
+    width: 100%;
+    max-width: 370px;
+    background: rgba(216, 216, 216, 0.219);
+    border: none;
+    outline: none;
+    padding: 10px 20px;
+    border-radius: 35px;
+    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.589);
+    color: rgb(255, 255, 255);
+    font-size: 16px;
+    letter-spacing: 1px;
+}
+
+.form .inputBox input[type="name"],
+.form .inputBox input[type="email"] {
+    min-width: 300px;
+}
+
+.form .checkbox input[type="checkbox"] {
+    border-radius: 10px;
+}
+
+.form .inputBox input::placeholder {
+    color: rgb(255, 255, 255);
+}
+
+.form .inputBox input[type="submit"] {
+    background-image: linear-gradient(to right, #01b3d0 0%, #7ebdca 100%);
+    background-size: 200% auto;
+    transition: all .3s ease;
+    max-width: 120px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.form .inputBox input[type="submit"]:hover {
+    background-position: right center;
+}
+
+.form .subtitle {
+    margin-top: 5px;
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+.form .subtitle a {
+    color: rgb(45, 149, 170);
+    text-decoration: underline;
+    font-weight: 600;
+}
 
 @media (max-width: 1280px) {
-    .container{
+    .containerAll{
         position: absolute;
         top: 45%;
         left: 42%;
@@ -96,21 +186,24 @@ fieldset {
 }
 
 @media (max-width: 1090px) {
-    .container .content {
-        display: none;
-    }
-
-    .container {
-        width: 120vw;
+    .containerAll {
+        width: 100vw;
         left: 37.8%;
     }
 
-    .container .logreg-box {
-        position: absolute;
-        top: 0;
-        right: 0;
+    .containerAll .content {
+        display: none;
+    }
+
+    .box {
         width: 100%;
-        height: 100%;
-        overflow: hidden;
+    }
+
+    .container {
+        width: 100%;
+    }
+
+    .form {
+        width: auto;
     }
 }

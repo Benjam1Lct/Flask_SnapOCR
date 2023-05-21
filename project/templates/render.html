@@ -6,13 +6,16 @@
 {% endblock %}
 
 {% block content %}
-<div class="image">
-    <p id="urlImage" style="display:none;">{{url}}</p>
-    <img src="{{url}}" > 
+<div class="container">
+    <div class="image">
+        <p id="urlImage" style="display:none;">{{url}}</p>
+        <img src="{{url}}" >
+    </div>
 </div>
+
 <div class="prediction">
     <div class="predi_flex">
-        <p class="arrow"><i class='bx bxs-chevron-right bx-flashing' style='color:#474747'  ></i></p>
+        <p class="arrow"><i class='bx bxs-chevron-right bx-flashing' style='color:var(--text-color)'  ></i></p>
         <div class="text">
             <textarea style="display:none" id="textCopy">{{ocr_text}}</textarea>
             <p id="typed-text"></p>
@@ -23,21 +26,21 @@
     <div id="button">
         {%if button == 'wait' %}
         <button id="openModalButton">Save</button>
-        <div class="formdiv" id="formdiv" style="display: none;">
-           <form method="POST" action="/render" id="formModal">
+        {%elif button == 'validate' %}
+        <a class="submitSave" id="saveCheck submitSave" href="javascript:void(0)" style="cursor: default;"><i class='bx bx-check'></i></a>
+        {%endif%}
+        <a id="retry" href="{{url_for('main.index')}}">Again</a>
+    </div>
+    <div class="formdiv" id="formdiv" style="display: none;">
+        <form method="POST" action="/render" id="formModal">
+            <button class="close"><i class='bx bx-collapse-alt'></i></button>
             <h2>Title</h2>
             <input class="input is-large" type="text" name="textpredict" value="{{ocr_text}}" style="display: none;">
             <input class="input is-large" type="text" name="imageurl" value="{{url}}" style="display: none;">
-            <input class="input is-large" type="text" name="title" id="inputTitle">
-            <button type="submit" id="submitSave">Validate</button>
-        </form>  
-        </div>
-        {%elif button == 'validate' %}
-        <a id="saveCheck submitSave" href="javascript:void(0)" style="cursor: default;"><i class='bx bx-check'></i></a>
-        {%endif%}
-        <a id="retry" href="{{url_for('main.index')}}">Again</a>
-          
-    </div>
+            <input class="title" type="text" name="title" id="inputTitle">
+            <button class="submit" type="submit" id="submitSave">Validate</button>
+            </form>
+     </div>
     
 </div>
 {% endblock %}

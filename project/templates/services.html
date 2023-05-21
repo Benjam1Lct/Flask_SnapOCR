@@ -2,10 +2,46 @@
 
 {% block css %}
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/header.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/services.css') }}">
 {% endblock %}
 
 {% block content %}
-
+<div class="flexAll">
+    <div class="flexContent">
+        <img src="../static/img/services.png" style="width: 400px;">
+        <p>
+            Notre site vous permet d'extraire facilement le texte à partir d'images. 
+            Importez simplement l'image, et notre système le convertit en texte exploitable. 
+            Une solution rapide pour extraire des informations à partir d'images en quelques étapes simples.
+        </p>
+    </div>
+    <div class="flexCodes">
+        <div class="python">
+            <img src="../static/img/Icon/python.png" >
+            <p>Python</p>
+        </div>
+        <div class="tensorflow">
+            <img src="../static/img/Icon/Tensorflow.png" >
+            <p>Tensorflow</p>
+        </div>
+        <div class="numpy">
+            <img src="../static/img/Icon/numpy.png" >
+            <p>Numpy</p>
+        </div>
+        <div class="html">
+            <img src="../static/img/Icon/html.png" >
+            <p>HTML</p>
+        </div>
+        <div class="flask">
+            <img src="../static/img/Icon/flask.png" >
+            <p>Flask</p>
+        </div>
+        <div class="sqlite">
+            <img src="../static/img/Icon/sqlite.png" >
+            <p>Sqlite</p>
+        </div>
+    </div>
+</div>
 {% endblock %}
 
 {% block js %}

@@ -56,6 +56,25 @@ section .divProfile {
     border: none;
     background-color: transparent;
     cursor: pointer;
+    color: var(--text-color);
+}
+
+.editPrediValid {
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    display: none;
+    width: 24px;
+    height: 24px;
+    font-size: 22px;
+    position: fixed;
+    top: 8px;
+    margin-top: 158px;
+    margin-left: 462px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    color: var(--text-color);
 }
 
 .tuileBox {
@@ -73,7 +92,8 @@ section .divProfile {
     border: 1px solid var(--bg-color-dm);
     border-radius: 10px;
     border-top-right-radius: 15px;
-    background-color: rgb(221, 222, 235);
+    border: 1px solid rgba(255, 255, 255, 0.329);
+    background-color: rgb(212 195 196 / 40%);
     font-size: 13px;
     overflow: hidden;
     padding: 10px;
@@ -85,6 +105,17 @@ section .divProfile {
 
 .prediction-tuile .date {
     font-size: 12px;
+}
+
+.prediction-tuile .text {
+    padding-top: 10px;
+}
+
+.prediction-tuile .gradientTuile {
+    width: 150px;
+    height: 166px;
+    box-shadow: 0 0 30px 25px #fff;
+    transform: translate(-11px, -4px);
 }
 
 .prediction-tuile .deleteTuile {
@@ -101,6 +132,7 @@ section .divProfile {
     font-size: 24px;
     cursor: pointer;
     transition: all .2s ease;
+    display: none;
 }
 
 .prediction-tuile .deleteTuile:active {

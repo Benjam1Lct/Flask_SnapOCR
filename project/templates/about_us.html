@@ -2,10 +2,45 @@
 
 {% block css %}
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/header.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/about_us.css') }}">
 {% endblock %}
 
 {% block content %}
+<div class="flexAll">
 
+    <div class="flexPerso1">
+        <div class="flexPerso1Image">
+            <img src="../static/img/Clement.png" style="width: 120px;">
+        </div>
+        <div class="flexPerso1Text">
+            <p>Clementino</p>
+            <a href="https://github.com/clemleri" target="_blank"><i class='bx bxl-github'></i>Github</a>
+        </div>
+    </div>
+
+    <div class="underline"></div>
+
+    <div class="flexPerso2">
+        <div class="flexPerso2Text">
+            <p>PearlClone</p>
+            <a href="https://github.com/PearlClone" target="_blank">Github<i class='bx bxl-github'></i></a>
+        </div>
+        <div class="flexPerso2Image">
+            <img src="../static/img/Benjamin.png" style="width: 120px;">
+        </div>
+    </div>
+
+    <div class="flexSchool">
+        <img src="../static/img/school.png" style="width: 250px;">
+        <p>
+            Nous sommes deux étudiants en informatique ayant réalisé un projet pour la fin de l'année. 
+            Notre projet est une application web mettant en place une IA. Malgré notre faible expertise du sujet, 
+            pendant 3 mois, nous avons consacré du temps et des efforts pour créer une expérience utilisateur solide. 
+            Notre projet nous a permis de consolider nos compétences techniques et de développer notre capacité à travailler en équipe. 
+            Nous sommes impatients de vous faire découvrir notre travail.
+        </p>
+    </div>
+</div>
 {% endblock %}
 
 {% block js %}

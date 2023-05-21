@@ -8,7 +8,8 @@
 {% block content %}
 <div class="divProfile">
   <h1>Predictons Saves</h1>
-  <button class="editPredi"><i class='bx bxs-edit'></i></button>
+  <button class="editPredi" id="editPredi"><i class='bx bxs-edit'></i></button>
+  <button class="editPrediValid" id="editPrediValid"><i class='bx bx-check'></i></button>
   <div class="tuileBox">
     {% for prediction in current_user.predictions %}
     <div class="prediction-tuile prediction-tuile{{prediction.id}}" id="prediction-tuile prediction-tuile-{{prediction.id}}">

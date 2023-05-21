@@ -21,24 +21,28 @@ section {
     overflow: clip;
     text-align: center;
     align-items: center;
-    left: 11vw;
+    padding-left: 11vw;
+}
+
+.flexColumn {
+    display: flex;
+    flex-direction: column;
 }
 
 .form-with-text {
-    display: block;
+    display: flex;
+    flex-direction: column;
     width: auto;
     height: auto;
     transform: translateY(-30px);
 }
 
-.form-with-text span {
-    font-size: 35px;
+.spanTyped {
+    font-size: 33px;
     font-weight: 600;
     text-align: left;
     text-transform: uppercase;
-    transform: translate(-12px, -35px);
-    display: inline-block;
-    scale: 1;
+    margin-bottom: 60px;
 }
 
 .form-with-text .bxs-file-find {
@@ -48,12 +52,14 @@ section {
 
 section .illustration {
     position: relative;
-    width: 100vw;
+    width: 75%;
+    max-width: 1242px;
     height: auto;
-    top: 20px;
-    right: 80px;
+    top: 35px;
+    right: 0px;
     overflow: hidden;
-    scale: 1.1;
+    scale: 1.2;
+    right: -5vw
 }
 
 .container {
@@ -62,6 +68,7 @@ section .illustration {
     height: 350px;
     width: 430px;
     margin-right: 100px;
+    margin-top: 5px;
 }
 
 .container .wrapper {
@@ -69,13 +76,19 @@ section .illustration {
     height: 300px;
     width: 100%;
     border-radius: 10px;
-    background: var(--bg-color);
-    border: 2px dashed var(--bg-color-dm);
+    background-color: rgba(228, 228, 228, 0.349);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    padding: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-left: 2px;
     overflow: hidden;
+    padding-bottom: 46px;
+    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
 }
+
+
 
 .wrapper .image{
     position: absolute;
@@ -90,11 +103,13 @@ section .illustration {
     height: 100%;
     width: 100%;
     object-fit: cover;
+    margin-top: 35px;
 }
 
 .wrapper .icon {
     font-size: 100px;
     color: var(--main-color);
+    height: 158px;
 }
 
 .wrapper .text {
@@ -138,35 +153,40 @@ section .illustration {
 
 .container #custom-btn {
     margin-top: 20px;
-    width: 60px;
+    width: 50px;
     height: 50px;
     display: block;
     border: none;
     outline: none;
-    border-radius: 25px;
     color: var(--bg-color);
     font-size: 18px;
     font-weight: 500;
     letter-spacing: 1px;
     text-transform: uppercase;
     cursor: pointer;
-    background: var(--main-color);
-    margin-right: 5px;
-}
-.container #custom-btn i{
+    background: transparent;
+    margin-right: 10px;
     display: flex;
-    font-size: 30px;
-    text-align: center;
     justify-content: center;
     align-items: center;
+    border: 1px solid rgba(255, 255, 255, 0.329);
+    border-radius: 35px;
+    background-color: rgba(228, 228, 228, 0.349);
+    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
+}
+
+.container #custom-btn img{
+    width: 50px;
 }
 
 .container #upload-btn {
     color: var(--text-color);
-    border: 3px solid var(--warm-bright-color);
-    background-color: var(--bg-color);
+    background-image: linear-gradient(to right, #edcd64 0%, #e4cf90 51%, #e1b53c 100%);
+    background-size: 200% auto;
+    border: 1px solid rgba(255, 255, 255, 0.329);
+    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
     outline: none;
-    border-radius: 25px;
+    border-radius: 35px;
     width: 100%;
     height: 50px;
     margin-top: 20px;
@@ -179,8 +199,7 @@ section .illustration {
 }
 
 .container #upload-btn:hover {
-    background: var(--warm-bright-color);
-    color: var(--bg-color);
+    background-position: right center;
 }
 
 .button_convert {
@@ -188,25 +207,21 @@ section .illustration {
 }
 
 @media (max-width: 1380px) {
-    .form-with-text {
-        display: block;
-        width: auto;
-        height: auto;
-        transform: translateY(0px);
-    }
-    
-    .form-with-text p {
-        font-size: 24px;
-        font-weight: 600;
-        margin: 30px;
-        display: none;
-    }
-
-    .form-with-text .bxs-file-find {
-        display: none;
-    }
     section .illustration {
-        scale: 1.5;
-        right: -5vw;
+        display: none;
+    }
+}
+
+@media (max-width: 1080px) {
+    section {
+        justify-content: unset;
+        padding-left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: clip;
+        text-align: center;
+        align-items: center;
+        position: absolute;
+        left: 23vw;
     }
 }

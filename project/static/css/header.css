@@ -28,34 +28,56 @@
 
 :root {
     --bg-color: #fff;
-    --bg-color-dm: #969696;
-    --text-color: #323d4b;
-    --main-color: #4042e2;
+    --bg-color-dm: #e0e0e0;
+    --bg-html-color: #6B5B95;
+    --text-color: #ffffff;
+    --main-color: #edcd64 ;
     --secondary-color: #f5b24e;
-    --warm-color: #e75d4b;
-    --warm-bright-color: #ff8682;
+    --warm-color: #EE1D52;
+    --warm-bright-color: #ff607e;
     --cold-color: #fcea4e;
-    --melon: #F6ACABff;
-    --platinum: #D1DCDDff;
-    --seashell: #F9F1EEff;
-    --carolina-blue: #8AB7CBff;
-    --sky-blue: #7CB8CDff;
-    --tea-rose-red: #F9C6C2ff;
-    --carolina-blue-2: #79B3CCff;
-    --silver: #B6A8A2ff;
-    --light-blue: #B1D7D8ff;
-    --peach: #FBC39Bff;
     --save: #4abb83;
+
+    --primary-100:#EE1D52;
+    --primary-200:#ff607e;
+    --primary-100:#6B5B95;
+    --primary-200:#4B4068;
+    --primary-300:#E1DDEB;
+    --accent-100:#FF7F11;
+    --accent-200:#BE5800;
+    --text-100:#333333;
+    --text-200:#424242;
+    --bg-100:#E6E6FA;
+    --bg-200:#D2D2F6;
+    --bg-300:#FFFFFF;
+    --color-334: #323d4b;
+      
+      
+}
+
+:root.dark {
+    --primary-100:#FFC857;
+    --primary-200:#deab3a;
+    --primary-300:#936a00;
+    --accent-100:#D90429;
+    --accent-200:#ffbfaf;
+    --text-100:#FFFFFF;
+    --text-200:#e0e0e0;
+    --bg-100:#2B2B2B;
+    --bg-200:#3b3b3b;
+    --bg-300:#545454;
 }
 
 html{
-    background-color: #788bf2;
-    backdrop-filter: blur(10px); /* Flou de l'arrière-plan */
+    background: url(../img/vivid-blurred-colorful-background2.jpg) no-repeat;
+    background-size: cover;
+    backdrop-filter: blur(1px); /* Flou de l'arrière-plan */
 }
 
 body{
     min-height: 100vh;
-    background-color: rgba(255, 255, 255, 0.842); /* Couleur de fond avec opacité */
+    background-color: rgba(145, 145, 145, 0.425);
+    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.377);
     color: var(--text-color);
     scale: 0.96;
     box-sizing: border-box;
@@ -73,6 +95,17 @@ header{
     justify-content: space-between;
     padding: 28px 12%;
     transition: all .20s ease;
+}
+
+header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(5px);
+    z-index: -1;
 }
 
 .logo{
@@ -97,7 +130,7 @@ header{
 }
 
 .navbar a{
-    color: var(--text-color);
+    color: var(--bg-color-dm);
     font-size: 1.1rem;
     font-weight: 500;
     padding: 5px 0;
@@ -106,11 +139,11 @@ header{
 }
 
 .navbar a:hover{
-    color: var(--main-color);
+    color: var(--text-color);
 }
 
 .navbar a.active{
-    color: var(--main-color);
+    color: var(--text-color);
     border-bottom: 2px solid var(--text-color);
 }
 
@@ -124,22 +157,34 @@ header{
     margin-left: 10px;
     font-size: 1.1rem;
     font-weight: 500;
-    transition: all .30s ease;
-    padding: 6px 20px;
-    border-radius: 25px;
-    background-color: var(--main-color);
+    transition: all .50s ease;
+    padding: 8px 22px;
+    border-radius: 35px;
+    border: 1px solid rgba(255, 255, 255, 0.329);
+    background-size: 200% auto;
+    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
+}
+
+.logout {
+    background-image: linear-gradient(to right, #e45075 0%, #d88298 51%, #db4067 100%);
+    padding-bottom: 9px;
+}
+
+.logout a {
+    padding-bottom: 9px;
 }
 
 .user {
     display: flex;
     align-items: center;
     color: var(--bg-color);
+    background-image: linear-gradient(to right, #7765e3 0%, #a498df 51%, #a099c3 100%);
+
 }
 
-.user:hover {
-    color: var(--text-color);
-    background-color: transparent;
-    outline: 3px solid var(--main-color);
+.user:hover,
+.logout:hover {
+    background-position: right center;
 }
 
 .user i{
@@ -173,7 +218,11 @@ header{
 }
 
 .is-danger {
-    background-color: var(--warm-bright-color);
+    background: rgba(238, 29, 82, 0.3);
+}
+
+.is-danger a {
+    color: rgba(238, 29, 82, 1);
 }
 
 @media (max-width: 1280px){
@@ -203,12 +252,27 @@ header{
         right: -200%;
         width: 270px;
         height: 255px;
-        background: var(--main-color);
+        background-color: rgba(228, 228, 228, 0.349);
+        border: 1px solid rgba(255, 255, 255, 0.329);
+        box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
         border-radius: 10px;
         transition: all .30s ease;
+    }
+
+    .navbar::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 10px;
+        background-color: rgba(228, 228, 228, 0.178);
+        backdrop-filter: blur(5px);
+        z-index: -1;
     }
 
     .navbar a{
@@ -229,14 +293,6 @@ header{
 
     .navbar.open{
         right: 2%;
-    }
-
-    section .illustration {
-        display: none;
-    }
-
-    section .container {
-        position: relative;
     }
 
     .main a{

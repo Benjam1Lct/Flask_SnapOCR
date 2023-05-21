@@ -1,0 +1,124 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    text-decoration: none;
+    list-style: none;
+}
+
+html,body{
+    overflow: hidden;
+    height: 100%;
+}
+
+section {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: scroll;
+    text-align: center;
+    padding-top: 180px;
+}
+
+.flexAll {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.flexPerso1,
+.flexPerso2,
+.flexSchool {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 30px;
+}
+
+.flexPerso1 {
+    margin-bottom: 40px;
+}
+
+.flexPerso2 {
+    margin-top: 40px;
+}
+
+.flexSchool {
+    flex-wrap: wrap;
+    margin-top: 60px;
+    justify-content: center;
+}
+
+.underline {
+    width: 705px;
+    height: 2px;
+    background-color: rgba(255, 255, 255, 0.589);
+    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
+}
+
+.flexSchool p {
+    max-width: 455px;
+    text-align: left;
+}
+
+.flexPerso1Image img,
+.flexPerso2Image img {
+    border: 1px solid rgba(255, 255, 255, 0.589);
+    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
+    background: rgba(209, 209, 209, 0.295);
+    border-radius: 10px;
+}
+
+.flexPerso1Text {
+    text-align: left;
+}
+
+.flexPerso2Text {
+    text-align: right;
+}
+
+.flexPerso1Text,
+.flexPerso2Text {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding-bottom: 15px;
+}
+
+.flexPerso1Text {
+    align-items: flex-start;
+}
+
+.flexPerso2Text {
+    align-items: flex-end;
+}
+
+.flexPerso1Text p,
+.flexPerso2Text p {
+    font-size: 28px;
+    font-weight: 600;
+}
+
+.flexPerso1Text a,
+.flexPerso2Text a {
+    display: flex;
+    align-items: center;
+    border: 1px solid rgba(0, 0, 0, 0.589);
+    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 5px 10px;
+    color: black;
+    max-width: 120px;
+}
+
+.flexPerso1Text a i {
+    margin-right: 5px;
+    font-size: 30px;
+}
+.flexPerso2Text a i {
+    margin-left: 5px;
+    font-size: 30px;
+}

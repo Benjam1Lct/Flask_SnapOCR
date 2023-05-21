@@ -25,3 +25,30 @@ for (var i = 0; i < deleteButtons.length; i++) {
         tuile.style.display = 'none';
     });
 }
+
+const editButton = document.getElementById('editPredi');
+const editValidate = document.getElementById('editPrediValid');
+
+editButton.addEventListener('click', function() {
+    for (var i = 0; i < deleteButtons.length; i++) {
+        var button = deleteButtons[i];
+        
+        button.style.display = 'flex';
+    }
+    
+    editButton.style.display = 'none';
+    editValidate.style.display = 'flex';
+});
+
+   
+editValidate.addEventListener('click', function() {
+    for (var i = 0; i < deleteButtons.length; i++) {
+        var button = deleteButtons[i];
+        
+        button.style.display = 'none';
+    }
+    
+    editButton.style.display = 'flex';
+    editValidate.style.display = 'none';
+    location.reload(true);
+});

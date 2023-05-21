@@ -52,9 +52,7 @@ submitButton.addEventListener('click', (event) => {
 function showLoader() {
     if (defaultBtn.value !== "") {
         submitButton.style.pointerEvents = "none";
-        submitButton.style.background = "#969696";
-        submitButton.style.borderColor = "#969696";
-        submitButton.style.color = "#fff";
+        submitButton.style.background = "rgba(228, 228, 228, 0.349)";
         cancelBtn.style.display = 'none';
         fileName.style.display = 'none';
         // Masquer la page

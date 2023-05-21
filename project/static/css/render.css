@@ -24,31 +24,47 @@ section {
 }
 
 section .image {
-    display: flex;
-    align-items: center;
-    justify-content: center;
     max-width: 550px;
-    width: auto;
-    height: 300px;
-    border: 2px dashed var(--bg-color-dm);
-    padding: 10px;
-    border-radius: 12px;
-}
-
-section img {
-    width: auto;
-    height: 100%;
+    max-height: 300px;
     border-radius: 10px;
+    overflow: hidden;
+    padding: 10px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-section .prediction {
+.container {
+    min-height: 300px;
+    max-width: 550px;
+    max-height: 300px;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: rgba(228, 228, 228, 0.349);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.image {
+    width: 100%;
+    height: 100%;
     display: flex;
-    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.image img {
+width: 100%;
+height: 100%;
+object-fit: contain;
+border-radius: 10px;
 }
 
 section .predi_flex {
     display: flex;
-    border-top: 2px solid var(--text-color);
+    border-top: 1px solid var(--text-color);
     width: 550px;
     max-height: 33vh;
     margin-top: 40px;
@@ -66,6 +82,7 @@ section .predi_flex #buttonCopy {
     width: 30px;
     margin-top: 5px;
     margin-left: 520px;
+    transition: all .2s ease;
 }
 
 section .predi_flex #buttonDownload {
@@ -80,15 +97,21 @@ section .predi_flex #buttonDownload {
     width: 30px;
     margin-top: 5px;
     margin-left: 485px;
+    transition: all .2s ease;
 }
 
 section .predi_flex #buttonDownload i {
     padding-top: 5px;
 }
 
+section .predi_flex #buttonCopy:hover,
+section .predi_flex #buttonDownload:hover {
+    background-color: rgb(212 195 196 / 33%);
+}
+
 section .predi_flex #buttonCopy:active,
 section .predi_flex #buttonDownload:active {
-    background-color: var(--bg-color-dm);
+    background-color: rgba(128, 128, 128, 0.33);
 }
 
 section .text {
@@ -118,8 +141,7 @@ section p i {
 }
 
 section #button {
-    margin-top: 60px;
-    margin-bottom: 30%;
+    transform: translateY(45px);
 }
 
 section #saveText {
@@ -158,32 +180,72 @@ section #saveCheck {
 }
 
 section #retry {
-    background-color: var(--warm-color);
+    background-image: linear-gradient(to right, #e45075 0%, #d66783 51%, #db4067 100%);
+    background-size: 200% auto;
     color: var(--bg-color);
     font-size: 18px;
     padding: 7px 25px;
-    border: 3px solid var(--warm-color);
-    border-radius: 100px;
+    border: 1px solid rgba(255, 255, 255, 0.329);
+    border-radius: 10px;
     transition: all .3s ease;
     margin-left: 25px;
 }
 
-#button #saveText:hover,
-#button #retry:hover {
-    background-color: transparent;
-    color: var(--text-color);
+#button #retry:hover,
+#openModalButton:hover,
+.submitSave:hover {
+    background-position: right center;
+}
+
+#openModalButton {
+    background-image: linear-gradient(to right, #7e7e7e 0%, #797979 51%, #585858 100%);
+    background-size: 200% auto;
+    color: var(--bg-color);
+    font-size: 18px;
+    padding: 7px 25px;
+    border: 1px solid rgba(255, 255, 255, 0.329);
+    border-radius: 10px;
+    transition: all .3s ease;
+    margin-left: 25px;
+    cursor: pointer;
+}
+
+.submitSave {
+    background-image: linear-gradient(to right, #59c03a 0%, #78bd63 51%, #459226 100%);
+    background-size: 200% auto;
+    color: var(--bg-color);
+    font-size: 18px;
+    padding: 6px 39px;
+    border: 1px solid rgba(255, 255, 255, 0.329);
+    border-radius: 10px;
+    transition: all .3s ease;
+    margin-left: 25px;
+    cursor: none;
+    pointer-events: none;
 }
 
 .formdiv {
-    position: absolute;
+    display: none;
+    position: fixed;
     z-index: 1000;
     top: 0;
     left: 0;
-    height: 100%;
     width: 100%;
-    background: rgba(105, 105, 105, 0.8);
+    height: 100%;
     justify-content: center;
     align-items: center;
+}
+
+.formdiv::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(95, 95, 95, 0.4);
+    backdrop-filter: blur(5px);
+    z-index: -1;
 }
 
 form {
@@ -195,5 +257,32 @@ form {
     align-items: center;
     width: 400px;
     height: 200px;
-    background-color: var(--bg-color);
+    border: 1px solid rgba(255, 255, 255, 0.589);
+    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
+    background: rgba(192, 192, 192, 0.658);
+    border-radius: 10px;
+}
+
+form h2 {
+    color: #3c3c3c;
+    margin-top: -34px;
+    margin-bottom: 15px;
+    font-size: 30px;
+}
+
+form .close {
+    border: none;
+    background: transparent;
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 22px;
+    padding: 10px;
+    color: #3c3c3c;
+}
+
+form .title {
+    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.589);
+    color: rgb(255, 255, 255);
 }
