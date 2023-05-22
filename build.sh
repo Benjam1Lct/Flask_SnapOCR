@@ -3,6 +3,6 @@
 set -o errexit
 
 python -m venv auth
-source "$PWD/auth/Scripts/activate"
+"/auth/Scripts/activate"
 
 pip install -r project/requirements.txt
