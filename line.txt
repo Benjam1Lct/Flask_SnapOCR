@@ -1,5 +1,5 @@
 python -m venv auth
-source auth/bin/activate
+source auth/Scripts/activate
 pip install -r project/requirements.txt
 export FLASK_APP=project
 export FLASK_ENV=development
