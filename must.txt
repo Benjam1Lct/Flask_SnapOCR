@@ -1,0 +1,6 @@
+source auth/Scripts/activate
+
+export FLASK_APP=project
+
+export DATABASE_URL=postgresql://snapocr_postgres_user:Q6Dc6Hi9A1VtxUJajrxsOwHybVMQwYtA@dpg-chlqjre7a
+vj2178s81cg-a.frankfurt-postgres.render.com/snapocr_postgres
