@@ -11,13 +11,12 @@ numpy
 opencv-python
 segmentation-models
 imgaug
-validators
+
 cloudinary
 Pillow
-flask-wtf
-email_validator
-tqdm
+
+
 essential-generators
 editdistance
-pyclipper
+
 gunicorn
