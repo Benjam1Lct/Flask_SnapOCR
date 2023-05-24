@@ -8,10 +8,6 @@ from .models import User, Predict
 
 main = Blueprint('main', __name__)
 
-from . import pipeline
-keras_pipeline = pipeline.Pipeline()
-
-
 def get_image_id_from_url(image_url):
     # Extraire le public_id de l'URL de l'image
     public_id = image_url.split('/')[-1].split('.')[0]
@@ -50,15 +46,8 @@ def index():
         image_url = upload_result['secure_url']
         print(image_url)
         
-        predictions = keras_pipeline.recognize([image_url])
-        ocr_text = ""
-        for text, box in predictions[0]:
-            ocr_text += text + " "
-        print(ocr_text)
-        print('Image processed successfully')
-
         button = 'wait'
-        return render_template('render.html', ocr_text=ocr_text, url=image_url, button=button)
+        return render_template('render.html', url=image_url, button=button)
     return render_template('index.html')
 
 @main.route('/profile')

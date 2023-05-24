@@ -2,5 +2,7 @@ source auth/Scripts/activate
 
 export FLASK_APP=project
 
-export DATABASE_URL=postgresql://snapocr_postgres_user:Q6Dc6Hi9A1VtxUJajrxsOwHybVMQwYtA@dpg-chlqjre7a
-vj2178s81cg-a.frankfurt-postgres.render.com/snapocr_postgres
+export DATABASE_URL=postgresql://snapocr_postgres_user:Q6Dc6Hi9A1VtxUJajrxsOwHybVMQwYtA@dpg-chlqjre7avj2178s81cg-a.frankfurt-postgres.render.com/snapocr_postgres
+
+from werkzeug.utils import secure_filename
+from werkzeug.datastructures import  FileStorage

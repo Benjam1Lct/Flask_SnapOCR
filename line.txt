@@ -4,3 +4,20 @@ pip install -r project/requirements.txt
 export FLASK_APP=project
 export FLASK_ENV=development
 flask run
+
+tensorflow
+Werkzeug
+numpy
+opencv-python
+segmentation-models
+imgaug
+validators
+cloudinary
+Pillow
+flask-wtf
+email_validator
+tqdm
+essential-generators
+editdistance
+pyclipper
+gunicorn
