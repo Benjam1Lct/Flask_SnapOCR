@@ -1,7 +1,8 @@
-from flask import Flask, render_template, request, redirect, url_for, flash, Blueprint
+from flask import Flask, jsonify, render_template, request, redirect, url_for, flash, Blueprint
 from flask_login import login_required, current_user
 import cloudinary
 from cloudinary.uploader import upload, destroy
+import requests, urllib
 from . import db
 from datetime import datetime
 from .models import User, Predict
@@ -45,6 +46,8 @@ def index():
         upload_result = upload(file)
         image_url = upload_result['secure_url']
         print(image_url)
+
+        
         
         button = 'wait'
         return render_template('render.html', url=image_url, button=button)

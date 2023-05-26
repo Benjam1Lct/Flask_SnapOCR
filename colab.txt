@@ -1,3 +1,14 @@
+tensorflow
+Werkzeug
+numpy
+opencv-python
+segmentation-models
+imgaug
+cloudinary
+Pillow
+essential-generators
+editdistance
+gunicorn
 Flask
 Flask-Uploads
 Flask-SQLAlchemy
@@ -11,4 +22,4 @@ validators
 pyclipper
 tqdm
 gunicorn
-requests
+
