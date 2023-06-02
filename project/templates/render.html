@@ -3,12 +3,14 @@
 {% block css %}
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/header.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/render.css') }}">
+<!-- v4 -->
+<script src='https://cdn.jsdelivr.net/npm/tesseract.js@4/dist/tesseract.min.js'></script>
 {% endblock %}
 
 {% block content %}
 <div class="container">
     <div class="image">
-        <p id="urlImage" style="display:none;">{{url}}</p>
+        <p id="urlImage" style="display:none;">{{url}}</p>  
         <img src="{{url}}" >
     </div>
 </div>

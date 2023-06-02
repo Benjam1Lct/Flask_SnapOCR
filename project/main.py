@@ -47,7 +47,7 @@ def index():
         image_url = upload_result['secure_url']
         print(image_url)
 
-        
+        #get ocr recognition
         
         button = 'wait'
         return render_template('render.html', url=image_url, button=button)
