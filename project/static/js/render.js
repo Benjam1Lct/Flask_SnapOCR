@@ -1,7 +1,7 @@
 const textWrite = document.getElementById('textCopy').textContent;
 const saveTextButton = document.getElementById('buttonsave');
 
-import { createWorker } from 'tesseract.js';
+import { createWorker } from 'Tesseract';
 
 const worker = await createWorker({
   logger: m => console.log(m)
