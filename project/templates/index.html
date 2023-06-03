@@ -11,10 +11,27 @@
     <span id="typed-text"></span>
 </div>
 
+
+
 <div class="form-with-text">
-  <form method="POST" enctype="multipart/form-data" >
+  <form method="POST" enctype="multipart/form-data" action="/">
+    <select name="preferred_languages" id="preferred_languages-select" style="pointer-events: visible; cursor: pointer;">
+        <option value="">--Please choose a language--</option>
+        <option value="fra">French</option>
+        <option value="eng">English</option>
+        <option value="deu">German</option>
+        <option value="spa">Spanish</option>
+        <option value="ita">Italian</option>
+        <option value="ara">Arabic</option>
+        <option value="jpn">Japanese</option>
+        <option value="kor">Korean</option>
+        <option value="chi_sim">Chinese - Simplified</option>
+        <option value="chi_tra">Chinese - Traditional</option>
+        <option value="rus">Russian</option>
+        <option value="bul">Bulgarian</option>
+    </select>
       <div class="container">
-      <div class="wrapper">
+      <div class="wrapper" id="wrapper">
           <div class="image">
               <img id="img-upload" src="https://sisthege.sirv.com/transparent.png">
           </div>
@@ -25,10 +42,14 @@
           <div id="cancel-btn"><i class="ri-close-line"></i></div>
           <div class="file-name">File name here</div>
       </div>
-      <input  type="file" name="photo" id="default-btn" type="file" hidden>
+
+        <input  type="file" name="photo" id="default-btn" type="file" hidden>
+
+      
       <div class="button_convert">
-         <button type="button" onclick="defaultBtnActive()" id="custom-btn"><img src="../static/img/Icon/Folder.png" alt=""></button>
-          <button type="submit" value="Upload" id="upload-btn" onclick="showLoader()">Extract</button> 
+            
+            <button type="button" onclick="defaultBtnActive()" id="custom-btn"><img src="../static/img/Icon/Folder.png" alt=""></button>
+            <button type="submit" value="Upload" id="upload-btn" onclick="showLoader()">Extract</button> 
       </div>
       
       </div>
@@ -40,8 +61,43 @@
   <img class="illustration" src="../static/img/illu.png">
 {% endblock %}
 
+{% block message %}
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+    <div class="notification is-danger">
+        {{ messages[0] }}. 
+    </div>
+{% endif %}
+{% endwith %}
+<form method="POST" action="/signup">
+{% endblock %}
+
 {% block js %}
 <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js"></script>
 <script src="{{ url_for('static', filename='js/header.js') }}"></script>
 <script src="{{ url_for('static', filename='js/index.js') }}"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function() {
+  var selectedOption = '';
+
+  $('#preferred_languages-select').change(function() {
+    selectedOption = $(this).val();
+  });
+
+  $('form').submit(function(e) {
+    e.preventDefault();
+
+    // Ajoutez la valeur de l'option sélectionnée à un champ caché dans le formulaire
+    $('<input>').attr({
+      type: 'hidden',
+      name: 'selected_option',
+      value: selectedOption
+    }).appendTo($(this));
+
+    // Envoyez le formulaire
+    this.submit();
+  });
+});
+</script>
 {% endblock %}

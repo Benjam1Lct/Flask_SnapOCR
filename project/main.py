@@ -14,7 +14,7 @@ def get_image_id_from_url(image_url):
     public_id = image_url.split('/')[-1].split('.')[0]
     return public_id
 
-@main.route('/supprimer_image_cloudinary', methods=['POST'])
+@main.route('/supprimer_image_cloudinary', methods=['GET' , 'POST'])
 def supprimer_image_cloudinary():
     cloudinary.config(
     cloud_name = "dcjkfjdiv",
@@ -47,10 +47,16 @@ def index():
         image_url = upload_result['secure_url']
         print(image_url)
 
-        #get ocr recognition
-        
+        selected_option = request.form.get('selected_option')
+        print(selected_option)
+
         button = 'wait'
-        return render_template('render.html', url=image_url, button=button)
+
+        if selected_option == "": # if a user is found, we want to redirect back to signup page so user can try again
+            flash('Please select a language to start recognition')
+            return redirect(url_for('main.index'))
+                
+        return render_template('render.html', url=image_url, button=button, language=selected_option)
     return render_template('index.html')
 
 @main.route('/profile')

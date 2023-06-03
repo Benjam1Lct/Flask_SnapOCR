@@ -212,13 +212,13 @@ header::before {
     width: auto;
     position: fixed;
     bottom: 0;
-    right: 0;
+    left: 0;
     padding: 20px;
     margin: 20px;
 }
 
 .is-danger {
-    background: rgba(238, 29, 82, 0.3);
+    background: rgb(220 130 153);
 }
 
 .is-danger a {

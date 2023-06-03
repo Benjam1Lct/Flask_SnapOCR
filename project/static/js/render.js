@@ -1,18 +1,13 @@
-const textWrite = document.getElementById('textCopy').textContent;
 const saveTextButton = document.getElementById('buttonsave');
+var image_url = document.getElementById('urlImage').textContent;
+var lang = document.getElementById('textLang').textContent;
 
-import { createWorker } from 'Tesseract';
-
-const worker = await createWorker({
-  logger: m => console.log(m)
-});
-
-// Fonction pour effectuer l'OCR sur une image
-async function performOCR(imageUrl) {
-  await worker.load();
-  await worker.loadLanguage('eng');
-  await worker.initialize('eng');
-  const { data: { text } } = await worker.recognize(imageUrl);
+Tesseract.recognize(
+  image_url,
+  lang,
+  { logger: m => console.log(m) }
+).then(({ data: { text } }) => {
+  console.log(text);
   const typedText = new Typed('#typed-text', {
     strings: [text],
     typeSpeed: 10,
@@ -22,14 +17,7 @@ async function performOCR(imageUrl) {
     backDelay: 3000,
     showCursor: false
   });
-  await worker.terminate();
-}
-
-// Exécuter la détection OCR au chargement de la page
-document.addEventListener('DOMContentLoaded', async () => {
-  var image_url = document.getElementById('urlImage').textContent;
-  await performOCR(image_url);
-});
+})
 
 document.getElementById("buttonCopy").addEventListener("click", copy_password);
 

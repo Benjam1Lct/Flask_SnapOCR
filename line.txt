@@ -2,21 +2,8 @@ python -m venv auth
 source auth/Scripts/activate
 pip install -r requirements.txt
 export FLASK_APP=project
-export FLASK_ENV=development
+export DATABASE_URL=postgresql://snapocr_postgres_user:Q6Dc6Hi9A1VtxUJajrxsOwHybVMQwYtA@dpg-chlqjre7avj2178s81cg-a.frankfurt-postgres.render.com/snapocr_postgres
 flask run
 
-tensorflow
-Werkzeug
-numpy
-opencv-python
-segmentation-models
-imgaug
-
-cloudinary
-Pillow
-
-
-essential-generators
-editdistance
-
-gunicorn
+from werkzeug.utils import secure_filename
+from werkzeug.datastructures import  FileStorage

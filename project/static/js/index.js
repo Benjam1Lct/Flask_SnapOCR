@@ -10,7 +10,6 @@ const wrapper = document.querySelector(".wrapper");
 const fileName = document.querySelector(".file-name");
 const cancelBtn = document.querySelector("#cancel-btn");
 const defaultBtn = document.querySelector("#default-btn");
-defaultBtn.value = "";
 const customBtn = document.querySelector("#custom-btn");
 const img = document.querySelector("#img-upload");
 const fileInput = document.querySelector('input[type="file"]');
@@ -50,7 +49,7 @@ submitButton.addEventListener('click', (event) => {
   });
 
 function showLoader() {
-    if (defaultBtn.value !== "") {
+    if (fileInput.value !== '') {
         submitButton.style.pointerEvents = "none";
         submitButton.style.background = "rgba(228, 228, 228, 0.349)";
         cancelBtn.style.display = 'none';
@@ -58,6 +57,6 @@ function showLoader() {
         // Masquer la page
         document.getElementById('page').style.display = 'none';
         // Afficher le loader
-        img.src = "https://sisthege.sirv.com/4loader.gif";  
+        img.src = "https://sisthege.sirv.com/4loader.gif";
     };
 };
