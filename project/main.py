@@ -55,14 +55,14 @@ def index():
         if selected_option == "": # if a user is found, we want to redirect back to signup page so user can try again
             flash('Please select a language to start recognition')
             return redirect(url_for('main.index'))
-                
+        
         return render_template('render.html', url=image_url, button=button, language=selected_option)
     return render_template('index.html')
 
 @main.route('/profile')
 @login_required
 def profile():
-    return render_template('profile.html', user_id=current_user.id, predictions=current_user.predictions)
+    return render_template('profile.html',user_name=current_user.name, user_id=current_user.id, predictions=current_user.predictions)
 
 @main.route('/profile', methods=['POST'])
 @login_required

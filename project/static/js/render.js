@@ -5,25 +5,37 @@ const chevron = document.getElementById('chevron');
 const circle = document.getElementById('circle');
 var copyText = "";
 
-Tesseract.recognize(
-  image_url,
-  lang,
-  { logger: m => console.log(m) }
-).then(({ data: { text } }) => {
-  console.log(text);
-  copyText = text;
+if (lang !== "") {
+  Tesseract.recognize(
+    image_url,
+    lang,
+    { logger: m => console.log(m) }
+  ).then(({ data: { text } }) => {
+    console.log(text);
+    copyText = text;
+    circle.style.display = "none"
+    chevron.style.display = "block";
+    document.getElementById("inputText").value = text;
+    const typedText = new Typed('#typed-text', {
+      strings: [text],
+      typeSpeed: 10,
+      backSpeed: 10,
+      loop: false,
+      startDelay: 500,
+      backDelay: 3000,
+      showCursor: false
+    });
+  })
+}
+
+if (lang === "") {
+  const text = document.getElementById("afterSave").textContent;
   circle.style.display = "none"
   chevron.style.display = "block";
-  const typedText = new Typed('#typed-text', {
-    strings: [text],
-    typeSpeed: 10,
-    backSpeed: 10,
-    loop: false,
-    startDelay: 500,
-    backDelay: 3000,
-    showCursor: false
-  });
-})
+  document.getElementById("typed-text").textContent = text;
+
+} 
+
 
 document.getElementById("buttonCopy").addEventListener("click", copy_password);
 
@@ -60,7 +72,7 @@ window.addEventListener('beforeunload', function(event) {
     var xhr = new XMLHttpRequest();
     xhr.open('POST', '/supprimer_image_cloudinary', true);
     xhr.setRequestHeader('Content-Type', 'application/json');
-    xhr.send(JSON.stringify({ url: image_url }));
+    xhr.send(JSON.stringify({ url: image_url}));
   }
 });
 

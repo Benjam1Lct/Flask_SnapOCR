@@ -25,6 +25,7 @@
             <p style="display:none" id="textLang">{{language}}</p>
             <textarea hidden></textarea>
             <p id="typed-text"></p>
+            <p id="afterSave" style="display: none;">{{ocr_text}}</p>
         </div>
         <button id="buttonDownload"><i class='bx bxs-download' ></i></button>
         <button id="buttonCopy"><i class="ri-clipboard-fill"></i></button>
@@ -41,9 +42,9 @@
         <form method="POST" action="/render" id="formModal">
             <button class="close"><i class='bx bx-collapse-alt'></i></button>
             <h2>Title</h2>
-            <input class="input is-large" type="text" name="textpredict" value="{{ocr_text}}" style="display: none;">
+            <input class="input is-large" id="inputText" type="text" name="textpredict" value="" style="display: none;">
             <input class="input is-large" type="text" name="imageurl" value="{{url}}" style="display: none;">
-            <input class="title" type="text" name="title" id="inputTitle">
+            <input class="title" type="text" name="title" id="inputTitle" maxlength="10">
             <button class="submit" type="submit" id="submitSave">Validate</button>
             </form>
      </div>

@@ -61,6 +61,7 @@ section {
     text-align: left;
     text-transform: uppercase;
     margin-bottom: 60px;
+    display: flex;
 }
 
 .form-with-text .bxs-file-find {
@@ -273,9 +274,15 @@ section .illustration {
     display: flex;
 }
 
-@media (max-width: 1380px) {
+@media (max-width: 1520px) {
+    .flexColumn {
+        margin-top: 100px;
+    }
+    .spanTyped {
+        display: none;  
+    }
     section .illustration {
-        display: none;
+        top: 7%;
     }
 }
 
@@ -290,5 +297,8 @@ section .illustration {
         align-items: center;
         position: absolute;
         left: 23vw;
+    }
+    section .illustration {
+        display: none;
     }
 }
