@@ -17,9 +17,13 @@
 
 <div class="prediction">
     <div class="predi_flex">
-        <p class="arrow"><i class='bx bxs-chevron-right bx-flashing' style='color:var(--text-color)'  ></i></p>
+        <p class="arrow">
+            <i class='bx bxs-chevron-right bx-flashing' id="chevron" style='color:var(--text-color);' ></i>
+            <i class="ri-loader-4-line" id="circle" style='color:var(--text-color);'></i>
+        </p>
         <div class="text">
             <p style="display:none" id="textLang">{{language}}</p>
+            <textarea hidden></textarea>
             <p id="typed-text"></p>
         </div>
         <button id="buttonDownload"><i class='bx bxs-download' ></i></button>

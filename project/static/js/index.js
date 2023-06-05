@@ -54,9 +54,10 @@ function showLoader() {
         submitButton.style.background = "rgba(228, 228, 228, 0.349)";
         cancelBtn.style.display = 'none';
         fileName.style.display = 'none';
+        img.style.display = 'none'
         // Masquer la page
         document.getElementById('page').style.display = 'none';
         // Afficher le loader
-        img.src = "https://sisthege.sirv.com/4loader.gif";
+        document.getElementById('loader').style.display = 'flex';
     };
 };

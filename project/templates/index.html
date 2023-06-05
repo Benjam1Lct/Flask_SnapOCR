@@ -16,7 +16,7 @@
 <div class="form-with-text">
   <form method="POST" enctype="multipart/form-data" action="/">
     <select name="preferred_languages" id="preferred_languages-select" style="pointer-events: visible; cursor: pointer;">
-        <option value="">--Please choose a language--</option>
+        <option value="">Please choose a language</option>
         <option value="fra">French</option>
         <option value="eng">English</option>
         <option value="deu">German</option>
@@ -34,6 +34,12 @@
       <div class="wrapper" id="wrapper">
           <div class="image">
               <img id="img-upload" src="https://sisthege.sirv.com/transparent.png">
+              <div class="loader" id="loader">
+                <div style="--i: 1"></div>
+                <div style="--i: 2"></div>
+                <div style="--i: 3"></div>
+                <div style="--i: 4"></div>
+              </div>
           </div>
           <div id="page" class="content">
               <div class="icon"><img src="../static/img/Icon/Camera.png" alt=""></div>

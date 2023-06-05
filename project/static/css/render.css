@@ -131,8 +131,27 @@ section .arrow {
     text-align: right;
     transform: translate(6px, 0px);
     padding: 0;
-    margin-top: 0.5px;
+    margin-top: 4px;
     position: fixed;
+}
+
+section .arrow .bxs-chevron-right {
+    display: none;
+}
+
+section .arrow .ri-loader-4-line {
+    display: block;
+    animation: chargeur 4s linear infinite;
+    margin-top: 5px;
+}
+
+@keyframes chargeur {
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(720deg);
+    }
 }
 
 section p i {
@@ -180,44 +199,37 @@ section #saveCheck {
 }
 
 section #retry {
-    background-image: linear-gradient(to right, #e45075 0%, #d66783 51%, #db4067 100%);
-    background-size: 200% auto;
+    background: #e3c666;
     color: var(--bg-color);
     font-size: 18px;
     padding: 7px 25px;
-    border: 1px solid rgba(255, 255, 255, 0.329);
-    border-radius: 10px;
+    border: 1px solid transparent;
+    border-radius: 35px;
     transition: all .3s ease;
     margin-left: 25px;
 }
 
-#button #retry:hover,
-#openModalButton:hover,
-.submitSave:hover {
-    background-position: right center;
-}
 
 #openModalButton {
-    background-image: linear-gradient(to right, #7e7e7e 0%, #797979 51%, #585858 100%);
+    background: #7e7e7e;
     background-size: 200% auto;
     color: var(--bg-color);
     font-size: 18px;
     padding: 7px 25px;
-    border: 1px solid rgba(255, 255, 255, 0.329);
-    border-radius: 10px;
+    border: 1px solid transparent;
+    border-radius: 35px;
     transition: all .3s ease;
     margin-left: 25px;
     cursor: pointer;
 }
 
 .submitSave {
-    background-image: linear-gradient(to right, #59c03a 0%, #78bd63 51%, #459226 100%);
-    background-size: 200% auto;
+    background:#59c03a;
     color: var(--bg-color);
     font-size: 18px;
     padding: 6px 39px;
-    border: 1px solid rgba(255, 255, 255, 0.329);
-    border-radius: 10px;
+    border: 1px solid transparent;
+    border-radius: 35px;
     transition: all .3s ease;
     margin-left: 25px;
     cursor: none;

@@ -98,6 +98,7 @@ header{
 }
 
 header::before {
+    border-radius: 10px;
     content: "";
     position: absolute;
     top: 0;
@@ -158,16 +159,21 @@ header::before {
     font-size: 1.1rem;
     font-weight: 500;
     transition: all .50s ease;
-    padding: 8px 22px;
+    padding: 9px 22px;
+    background-color: rgb(219, 103, 152);
+    border-radius: 12px;
+    border: 1px solid transparent;
     border-radius: 35px;
-    border: 1px solid rgba(255, 255, 255, 0.329);
-    background-size: 200% auto;
-    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
 }
 
-.logout {
-    background-image: linear-gradient(to right, #e45075 0%, #d88298 51%, #db4067 100%);
+.main .logout {
+    background: rgb(255, 255, 255);
     padding-bottom: 9px;
+    margin-right: -3px;
+}
+
+.main .logout i {
+    color: #2B2B2B;
 }
 
 .logout a {
@@ -177,14 +183,7 @@ header::before {
 .user {
     display: flex;
     align-items: center;
-    color: var(--bg-color);
-    background-image: linear-gradient(to right, #7765e3 0%, #a498df 51%, #a099c3 100%);
-
-}
-
-.user:hover,
-.logout:hover {
-    background-position: right center;
+    color: #ffffff;
 }
 
 .user i{

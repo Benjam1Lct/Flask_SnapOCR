@@ -39,7 +39,7 @@
 
         {% if current_user.is_authenticated %}
         <div class="main">
-            <a href="{{ url_for('auth.logout') }}" class="logout" style="background-color: var(--text-color); color: white; width: 36.48px;margin-right: -6px;"><i style="transform: translate(-8.5px, 2px);" class='bx bx-power-off'></i></a>
+            <a href="{{ url_for('auth.logout') }}" class="logout" style=" width: 36.48px;"><i style="transform: translate(-8.5px, 2px);" class='bx bx-power-off'></i></a>
             <a href="{{url_for('main.profile')}}" class="user"><i class='bx bxs-user'></i>Profile</a>
             <div class="bx bx-menu" id="menu-icon"></div>
         </div>

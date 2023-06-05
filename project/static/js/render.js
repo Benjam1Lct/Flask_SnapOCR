@@ -1,6 +1,9 @@
 const saveTextButton = document.getElementById('buttonsave');
 var image_url = document.getElementById('urlImage').textContent;
 var lang = document.getElementById('textLang').textContent;
+const chevron = document.getElementById('chevron');
+const circle = document.getElementById('circle');
+var copyText = "";
 
 Tesseract.recognize(
   image_url,
@@ -8,6 +11,9 @@ Tesseract.recognize(
   { logger: m => console.log(m) }
 ).then(({ data: { text } }) => {
   console.log(text);
+  copyText = text;
+  circle.style.display = "none"
+  chevron.style.display = "block";
   const typedText = new Typed('#typed-text', {
     strings: [text],
     typeSpeed: 10,
@@ -22,9 +28,8 @@ Tesseract.recognize(
 document.getElementById("buttonCopy").addEventListener("click", copy_password);
 
 function copy_password() {
-    var copyText = document.getElementById("textCopy");
     var textArea = document.createElement("textarea");
-    textArea.value = copyText.textContent;
+    textArea.value = copyText;
     document.body.appendChild(textArea);
     textArea.select();
     document.execCommand("Copy");
@@ -33,8 +38,7 @@ function copy_password() {
 
 function convertTextToPDF() {
   var doc = new jspdf.jsPDF();
-  var text = document.getElementById('textCopy').value;
-  doc.text(text, 10, 10);
+  doc.text(copyText, 10, 10);
   doc.save('SnapOCR.pdf');
 }
 

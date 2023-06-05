@@ -145,8 +145,8 @@
 }
 
 .form .inputBox input[type="submit"] {
-    background-image: linear-gradient(to right, #01b3d0 0%, #7ebdca 100%);
-    background-size: 200% auto;
+    background:#01b3d0;
+    border: 1px solid transparent;
     transition: all .3s ease;
     max-width: 120px;
     cursor: pointer;
@@ -154,9 +154,6 @@
     font-weight: 600;
 }
 
-.form .inputBox input[type="submit"]:hover {
-    background-position: right center;
-}
 
 .form .subtitle {
     margin-top: 5px;

@@ -52,7 +52,7 @@ section {
 
 .form-with-text select option {
     background-color: rgba(0, 0, 0, 0.644);
-    color: #cfcfcf;
+    color: #e7e7e7;
 }
 
 .spanTyped {
@@ -106,8 +106,6 @@ section .illustration {
     box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
 }
 
-
-
 .wrapper .image{
     position: absolute;
     height: 100%;
@@ -116,6 +114,61 @@ section .illustration {
     align-items: center;
     justify-content: center;
 }
+
+.loader {
+    position: absolute;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    margin-top: 70px;
+  }
+  
+  .loader::before {
+    content: "";
+    background: rgba(255, 255, 255, 0);
+    backdrop-filter: blur(8px);
+    position: absolute;
+    width: 140px;
+    height: 55px;
+    z-index: 20;
+    border-radius: 0 0 10px 10px;
+    border: 1px solid rgba(255, 255, 255, 0.274);
+    border-top: none;
+    box-shadow: 0 15px 20px rgba(0, 0, 0, 0.082);
+    animation: anim2 2s infinite;
+  }
+  
+  .loader div {
+    background: rgb(228, 228, 228);
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    z-index: -1;
+    animation: anim 2s infinite linear;
+    animation-delay: calc(-0.3s * var(--i));
+    transform: translateY(5px);
+    margin: 0.2em;
+  }
+  
+  @keyframes anim {
+    0%,
+    100% {
+      transform: translateY(5px);
+    }
+    50% {
+      transform: translateY(-65px);
+    }
+  }
+  
+  @keyframes anim2 {
+    0%,
+    100% {
+      transform: rotate(-10deg);
+    }
+    50% {
+      transform: rotate(10deg);
+    }
+  }
 
 .wrapper .image img {
     height: 100%;
@@ -199,9 +252,9 @@ section .illustration {
 
 .container #upload-btn {
     color: var(--text-color);
-    background-image: linear-gradient(to right, #edcd64 0%, #e4cf90 51%, #e1b53c 100%);
+    background: #edcd64;
     background-size: 200% auto;
-    border: 1px solid rgba(255, 255, 255, 0.329);
+    border: 1px solid transparent;
     box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
     outline: none;
     border-radius: 35px;
@@ -214,10 +267,6 @@ section .illustration {
     text-transform: uppercase;
     cursor: pointer;
     transition: all .20s ease;
-}
-
-.container #upload-btn:hover {
-    background-position: right center;
 }
 
 .button_convert {
