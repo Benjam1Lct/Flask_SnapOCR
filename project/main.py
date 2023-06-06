@@ -59,26 +59,28 @@ def index():
         return render_template('render.html', url=image_url, button=button, language=selected_option)
     return render_template('index.html')
 
-@main.route('/profile')
+@main.route('/profile', methods=['GET' , 'POST'])
 @login_required
 def profile():
+    if request.method == 'POST':
+        data = request.json
+        prediction_idList = data['predictionId']
+        print(prediction_idList)
+
+        for prediction_id in prediction_idList:
+            print(prediction_id)
+            prediction = Predict.query.get(prediction_id)
+            if prediction:
+                db.session.delete(prediction)
+                db.session.commit()
+                print('message: Prédiction supprimée')
+            else:
+                print('message: Prédiction non trouvée')
+
+            return redirect(url_for('main.profile'))
+
+
     return render_template('profile.html',user_name=current_user.name, user_id=current_user.id, predictions=current_user.predictions)
-
-@main.route('/profile', methods=['POST'])
-@login_required
-def profile_delete():
-    data = request.json
-    prediction_id = data['predictionId']
-    
-    prediction = Predict.query.get(prediction_id)
-    if prediction:
-        db.session.delete(prediction)
-        db.session.commit()
-        print('message: Prédiction supprimée')
-    else:
-        print('message: Prédiction non trouvée')
-
-    return redirect(url_for('main.profile'))
 
 @main.route('/render', methods=['POST'])
 @login_required

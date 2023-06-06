@@ -7,10 +7,11 @@
 
 {% block content %}
 {% for prediction in predictions %}
+<div>
 <div class="nft">
   <div class='main'> 
     <h2>{{prediction.title}}</h2>
-    <p class='description'>{{prediction.text}}</p>
+    <p class='description paragraphe-specifique' id="description{{prediction.id}}">SelectingTYPEFACESfor body zefze fzfzdferi zhfhlizjef zfkj text</p>
     <div class='tokenInfo'>
       <div class="duration">
         <ins>◷</ins>
@@ -26,7 +27,18 @@
     </div>
   </div>
 </div>
+
+<button class="deleteTuile" id="deleteTuile{{prediction.id}}">
+  <i class="ri-delete-bin-2-line"></i>
+</button>  
+</div>
 {% endfor %}
+
+
+<button id="penButton">
+  <i class="ri-pencil-fill" id="pen"></i>
+  <i class="ri-check-double-line" id="diskSave"></i>
+</button>
 
 {% endblock %}
 

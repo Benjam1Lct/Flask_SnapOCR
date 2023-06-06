@@ -1,54 +1,77 @@
-// Sélectionner tous les boutons de suppression
+window.addEventListener("DOMContentLoaded", function() {
+    const paragraphs = document.querySelectorAll(".paragraphe-specifique");
+  
+    paragraphs.forEach(function(paragraph) {
+      if (paragraph.scrollHeight > paragraph.clientHeight) {
+        paragraph.classList.add("overflowed");
+      }
+    });
+  });
+  
+
+
 var deleteButtons = document.querySelectorAll('.deleteTuile');
+const editButton = document.getElementById('penButton');
+var activeButtonIds = [];
 
-// Parcourir les boutons de suppression
-for (var i = 0; i < deleteButtons.length; i++) {
-    var button = deleteButtons[i];
-    
-    // Ajouter un écouteur d'événements au clic sur chaque bouton
-    button.addEventListener('click', function(event) {
-        // Récupérer l'ID de la tuile
-        var tuileId = this.getAttribute('id');
 
-        // Extraire l'ID de l'attribut de classe
-        var id = tuileId.replace('deleteTuile', '');
-
-        // Faire quelque chose avec l'ID récupéré
-        console.log('ID de la tuile :', id);
-
+editButton.addEventListener('click', function() {
+    var element = document.querySelector('#pen');
+    var elementStyle = window.getComputedStyle(element);
+    // Vérifiez si la propriété "display" a la valeur "none"
+    if (elementStyle.display === "none") {
         var xhr = new XMLHttpRequest();
         xhr.open('POST', '/profile', true);
         xhr.setRequestHeader('Content-Type', 'application/json');
-        xhr.send(JSON.stringify({ predictionId: id }));
+        xhr.send(JSON.stringify({ predictionId: activeButtonIds }));
 
-        var tuile = this.closest('.prediction-tuile',id);
-        tuile.style.display = 'none';
-    });
-}
+        location.reload();
 
-const editButton = document.getElementById('editPredi');
-const editValidate = document.getElementById('editPrediValid');
-
-editButton.addEventListener('click', function() {
-    for (var i = 0; i < deleteButtons.length; i++) {
+    } else {
+        for (var i = 0; i < deleteButtons.length; i++) {
         var button = deleteButtons[i];
         
         button.style.display = 'flex';
-    }
-    
-    editButton.style.display = 'none';
-    editValidate.style.display = 'flex';
-});
-
-   
-editValidate.addEventListener('click', function() {
-    for (var i = 0; i < deleteButtons.length; i++) {
-        var button = deleteButtons[i];
+        }
+        console.log("Edition activée");
+        document.querySelector('#pen').style.display = 'none';
+        document.querySelector('#diskSave').style.display = 'block';
+        // Sélectionner tous les boutons de suppression
         
-        button.style.display = 'none';
+
+        // Parcourir les boutons de suppression
+        // Parcourir les boutons de suppression
+        for (var i = 0; i < deleteButtons.length; i++) {
+            (function() {
+            var buttonDel = deleteButtons[i];
+            
+            // Ajouter un écouteur d'événements au clic sur chaque bouton
+            buttonDel.addEventListener('click', function(event) {
+                // Récupérer l'ID de la tuile
+                var tuileId = this.getAttribute('id');
+        
+                // Extraire l'ID de l'attribut de classe
+                var id = tuileId.replace('deleteTuile', '');
+        
+                // Faire quelque chose avec l'ID récupéré
+                console.log('ID de la tuile :', id);
+        
+                // Vérifier si la classe "active" est ajoutée ou supprimée
+                if (!buttonDel.classList.contains('active')) {
+                    buttonDel.classList.add('active');
+                    activeButtonIds.push(id); // Ajouter l'ID à la liste
+                    console.log(activeButtonIds)
+                } else {
+                    buttonDel.classList.remove('active');
+                    var index = activeButtonIds.indexOf(id);
+                    if (index !== -1) {
+                    activeButtonIds.splice(index, 1); // Supprimer l'ID de la liste
+                    console.log(activeButtonIds)
+                    }
+                }
+            });
+            })();
+        }
+        
     }
-    
-    editButton.style.display = 'flex';
-    editValidate.style.display = 'none';
-    location.reload(true);
 });
