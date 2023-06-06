@@ -16,8 +16,7 @@
 <div class="form-with-text">
   <form method="POST" enctype="multipart/form-data" action="/">
     <select name="preferred_languages" id="preferred_languages-select" style="pointer-events: visible; cursor: pointer;">
-        <option value="">Please choose a language</option>
-        <option value="fra">French</option>
+        <option value="fra" >French</option>
         <option value="eng">English</option>
         <option value="deu">German</option>
         <option value="spa">Spanish</option>
@@ -85,7 +84,7 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
 $(document).ready(function() {
-  var selectedOption = '';
+  var selectedOption = 'fra';
 
   $('#preferred_languages-select').change(function() {
     selectedOption = $(this).val();

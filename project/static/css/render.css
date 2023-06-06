@@ -256,7 +256,7 @@ section #retry {
     width: 100%;
     height: 100%;
     background: rgba(95, 95, 95, 0.4);
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(15px);
     z-index: -1;
 }
 
@@ -282,15 +282,16 @@ form h2 {
     font-size: 30px;
 }
 
-form .close {
+.close {
     border: none;
     background: transparent;
-    position: absolute;
-    top: 0;
-    right: 0;
+    position: relative;
     font-size: 22px;
     padding: 10px;
-    color: #3c3c3c;
+    color: #ffffff;
+    transform: translate(400px, -75px);
+    z-index: 1000000;
+    cursor: pointer;
 }
 
 form .title {

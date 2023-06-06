@@ -39,8 +39,8 @@
         <a id="retry" href="{{url_for('main.index')}}">Again</a>
     </div>
     <div class="formdiv" id="formdiv" style="display: none;">
+        <button class="close"><i class="ri-close-circle-line"></i></button>
         <form method="POST" action="/render" id="formModal">
-            <button class="close"><i class='bx bx-collapse-alt'></i></button>
             <h2>Title</h2>
             <input class="input is-large" id="inputText" type="text" name="textpredict" value="" style="display: none;">
             <input class="input is-large" type="text" name="imageurl" value="{{url}}" style="display: none;">
