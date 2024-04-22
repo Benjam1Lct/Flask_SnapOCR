@@ -12,3 +12,4 @@ pyclipper
 tqdm
 gunicorn
 requests
+waitress
