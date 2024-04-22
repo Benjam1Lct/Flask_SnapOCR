@@ -19,6 +19,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap" rel="stylesheet">
+    <link href="../static/css/zoom.css" rel="stylesheet">
     <title>SnapOCR</title>
 </head>
 <body>
@@ -29,7 +30,6 @@
             <li><a href="{{url_for('main.index')}}">Home</a></li>
             <li><a href="{{url_for('main.about_us')}}" >About Us</a></li>
             <li><a href="{{url_for('main.services')}}" >Services</a></li>
-            <li><a href="{{url_for('main.blog')}}" >Blog</a></li>
             {% if current_user.is_authenticated %}
             <li class="link-header-signin"><a href="{{url_for('main.profile')}}" >Profile</a></li>
             {% else %}
