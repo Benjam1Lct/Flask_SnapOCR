@@ -3,7 +3,7 @@ Flask-Uploads
 Flask-SQLAlchemy
 flask-login
 flask-sqlalchemy
-psycopg2
+psycopg2-binary
 cloudinary
 flask-wtf
 email_validator
