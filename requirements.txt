@@ -13,3 +13,4 @@ tqdm
 gunicorn
 requests
 waitress
+werkzeug<2.1
