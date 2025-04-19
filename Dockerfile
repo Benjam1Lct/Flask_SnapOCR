@@ -1,21 +1,32 @@
-# Utilise une image légère Python
+# Base image
 FROM python:3.10-slim
 
-# Définit le dossier de travail
+# Set environment variables
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
+
+# Set working directory
 WORKDIR /app
 
-# Copie les fichiers nécessaires
+# Install system packages
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    libpq-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+# Copy requirements and install
+COPY requirements.txt .
+RUN pip install --upgrade pip && pip install -r requirements.txt
+
+# Copy the project files
 COPY . .
 
-# Installe les dépendances
-RUN pip install --upgrade pip
-RUN pip install -r requirements.txt
+# Patch flask-uploads import for werkzeug compatibility
+RUN file_path=$(python -c "import flask_uploads; print(flask_uploads.__file__)") && \
+    sed -i 's/from werkzeug import secure_filename, FileStorage/from werkzeug.utils import secure_filename\nfrom werkzeug.datastructures import FileStorage/' "$file_path"
 
-# ✅ Patch du bug Flask-Uploads → werkzeug
-RUN sed -i 's/from werkzeug import secure_filename, FileStorage/from werkzeug.utils import secure_filename\\nfrom werkzeug.datastructures import FileStorage/' /usr/local/lib/python3.10/site-packages/flask_uploads.py
-
-# Expose le port
+# Expose port
 EXPOSE 5000
 
-# Démarre l'application Flask
-CMD ["python", "run.py"]
+# Launch with gunicorn
+CMD ["gunicorn", "run:app", "--bind", "0.0.0.0:5000"]
