@@ -21,9 +21,10 @@ RUN pip install --upgrade pip && pip install -r requirements.txt
 # Copy the project files
 COPY . .
 
-# Patch flask-uploads import for werkzeug compatibility
-RUN file_path=$(python -c "import flask_uploads; print(flask_uploads.__file__)") && \
+# Patch flask-uploads to fix werkzeug import issue
+RUN file_path=$(find /usr/local/lib -path "*/flask_uploads.py") && \
     sed -i 's/from werkzeug import secure_filename, FileStorage/from werkzeug.utils import secure_filename\nfrom werkzeug.datastructures import FileStorage/' "$file_path"
+
 
 # Expose port
 EXPOSE 5000
